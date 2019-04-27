@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <vector>
 #include "node.h"
 #include "zeropn.h"
 #include "onepn.h"
@@ -20,6 +21,6 @@ class Graph
 		Node* operator[](const string str);
 		int push(Node* newnode);
 		void reset();
-		float eval(string nodename,int placeholdernum,string* placeholdernames,float* placeholdervalue);
+		float eval(string nodename,int placeholdernum,std::vector<string> placeholdernames,std::vector<float> placeholdervalue);
 		void setvariable(string vname,float value);
 };

@@ -1,5 +1,6 @@
 #include "graph.h"
 #include<iostream>
+#include <vector>
 #include <string>
 int Graph::getid(std::string str)
 {
@@ -44,8 +45,8 @@ int Graph::push(Node* newnode)
         return 1;
     }
     nodes[used]=newnode;
-    used++;
-    return 0;
+	    used++;
+	    return 0;
 }
 void Graph::reset()
 {
@@ -54,7 +55,7 @@ void Graph::reset()
         nodes[i]->reset();//����variable��constant 
     }
 }
-float Graph::eval(string nodename,int placeholdernum,string* placeholdernames,float* placeholdervalue)
+float Graph::eval(string nodename,int placeholdernum,std::vector<string> placeholdernames,std::vector<float> placeholdervalue)
 {
     reset();
     for(int i=0;i<placeholdernum;i++)
