@@ -9,15 +9,15 @@ void Node::reset()
 {
     calculated=0;
 }
-float ZeroParentNode::geteval()
+float ZeroParentsNode::geteval()
 {
     return 1;
 }
-int ZeroParentNode::getParentsNum()
+int ZeroParentsNode::getParentsNum()
 {
     return 0;
 }
-float OneParentNode::geteval()
+float OneParentsNode::geteval()
 {
     if(calculated)return tempeval;
     else
@@ -27,12 +27,12 @@ float OneParentNode::geteval()
         return tempeval;
     }
 }
-int OneParentNode::getParentsNum()
+int OneParentsNode::getParentsNum()
 {
     return 1;
 }
-float OneParentNode::func(float x){}
-OneParentNode::OneParentNode(std::string a,Node* parent1)
+float OneParentsNode::func(float x){}
+OneParentsNode::OneParentsNode(std::string a,Node* parent1)
 {
     name=a;
     p1=parent1;

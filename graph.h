@@ -22,5 +22,6 @@ class Graph
 		void push(string newNodeName,string nodeTypName, ...);
 		void reset();
 		float eval(string nodename,int placeholdernum,string* placeholdernames,float* placeholdervalue);//计算,传入参数有数组？
-		void setvariable(string vname,float value);
+		void setVariable(string vname,float value);
+		void setAnswer(string vname, int count);
 };

@@ -3,39 +3,39 @@
 #include <string>
 #include <math.h>
 #include "node.h"
-class Print:public OneParentNode
+class Print:public OneParentsNode
 {
 	public:
-		using OneParentNode::OneParentNode;
+		using OneParentsNode::OneParentsNode;
 		float func(float x);
 };
-class Sin:public OneParentNode
+class Sin:public OneParentsNode
 {
 	public:
-		using OneParentNode::OneParentNode;
+		using OneParentsNode::OneParentsNode;
 		float func(float x);
 };
-class Exp:public OneParentNode
+class Exp:public OneParentsNode
 {
 	public:
-		using OneParentNode::OneParentNode;
+		using OneParentsNode::OneParentsNode;
 		float func(float x);
 };
-class Log:public OneParentNode
+class Log:public OneParentsNode
 {
 	public:
-		using OneParentNode::OneParentNode;
+		using OneParentsNode::OneParentsNode;
 		float func(float x);
 };
-class Tanh:public OneParentNode
+class Tanh:public OneParentsNode
 {
 	public:
-		using OneParentNode::OneParentNode;
+		using OneParentsNode::OneParentsNode;
 		float func(float x);
 };
-class Sigmoid:public OneParentNode
+class Sigmoid:public OneParentsNode
 {
 	public:
-		using OneParentNode::OneParentNode;
+		using OneParentsNode::OneParentsNode;
 		float func(float x);
 };

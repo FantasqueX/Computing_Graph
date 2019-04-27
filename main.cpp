@@ -3,19 +3,20 @@
 #include <assert.h>
 #include <cmath>
 #include <iomanip>
+#include <vector>
 #include "node.h"
 #include "graph.h"
 #include <iostream>
 using namespace std;
+vector <float> phvalues;
+vector <string> phnames;
 int main()
 {
-	//Node* nodes[100];
-	Graph gra;
+	Graph gra(100);
 	int n,m,q;
 	string name,type,tmp;
 	float value;
-	string* phnames;
-	float* phvalues;
+	float outvalue[100];
 	cin>>n;
 	for(int i=0; i<n; i++)
 	{
@@ -140,18 +141,22 @@ int main()
 		cin>>type;
 		if(type=="EVAL")
 		{
+
 			cin>>name;
 			int phcount;
 			cin>>phcount;
-			phnames = new string[phcount];
-			phvalues = new float[phcount];
-			for (int j=0; j<phcount; j++)
+			phnames.clear();
+			phvalues.clear();
+			for(int j=0; j<phcount; j++)
 			{
-				cin>>phnames[j];
-				cin>>phvalues[j];
+				string x;
+				float y;
+				cin>>x>>y;
+				phnames.push_back(x);
+				phvalues.push_back(y);
 			}
-			float outValue = gra.eval(name,phcount,phnames,phvalues);
-			if(!isnan(outValue))cout<<fixed<<setprecision(4)<<outValue<<endl;
+			outvalue[i]=gra.eval(name,phcount,phnames,phvalues);
+			if(!isnan(outvalue[i]))cout<<fixed<<setprecision(4)<<outvalue[i]<<endl;
 		}
 		else if(type=="SETCONSTANT")
 		{

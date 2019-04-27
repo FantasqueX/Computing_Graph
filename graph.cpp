@@ -2,44 +2,21 @@
 #include<iostream>
 #include <string>
 
-
-Graph::Graph(int sz)//确定节点数的构造函数
-{
-    size=sz;
-}
-
-Graph::~Graph()
-{
-    delete[] nodes;
-}
-
-
 Node* Graph::operator[](const string str)
 {
-    return getNamePointer(str);
+    return nodes[str];
 }
 
-int Graph::push(Node* newnode)
+void Graph::pushNode(string newNodeName,Node* newnode)
 {
-    if(getid(newnode->name)!=-1)
-    {
-        std::cout<<"Same name!"<<std::endl;
-    }
-    if(used==maxsize)
-    {
-        std::cout<<"Max size!"<<std::endl;
-        return 1;
-    }
-    nodes[used]=newnode;
-    used++;
-    return 0;
+    nodes.insert ( make_pair(newNodeName,newnode) );
 }
 
 void Graph::reset()
 {
-    for(int i=0; i<used; i++)
+    for(auto iter = nodes.begin(); iter != nodes.end(); iter++)
     {
-        nodes[i]->reset();//����variable��constant 
+        iter->second->reset();//����variable��constant 
     }
 }
 
@@ -47,11 +24,11 @@ float Graph::eval(string nodename,int placeholdernum,string* placeholdernames,fl
 {
     reset();
     for(int i=0;i<placeholdernum;i++)
-        getNamePointer(placeholdernames[i])->setvalue(placeholdervalue[i]);
-        
-    return getNamePointer(nodename)->geteval();
+        nodes[placeholdernames[i]]->setvalue(placeholdervalue[i]);
+    OutputList.push_back(nodes[nodename]->geteval());    
+    return *(OutputList.end()-1);
 }
-void Graph::setvariable(string vname,float value)
+void Graph::setVariable(string vname,float value)
 {
-    getNamePointer(vname)->setvalue(value);
+    nodes[vname]->setvalue(value);
 }

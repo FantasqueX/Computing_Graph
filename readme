@@ -1,0 +1,8 @@
+实现功能：
+1. 创建Placeholder和Constant
+2. 创建运算关系：加减乘除、正弦、对数、指数（ln）、双曲正切、sigmond
+3. 创建（调用）print运算
+4. 在一次eval过程中，如果节点被多次访问，要保留值
+5. 创建Variable， 实现setconstant
+6. setanswer
+7. Cond
