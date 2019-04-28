@@ -24,8 +24,8 @@ class ZeroParentsNode:public Node
 class OneParentsNode:public Node
 {
 	public:
-		Node& p1;//parents
-		OneParentsNode(std::string a,Node& parent1);
+		Node *p1;//parents
+		OneParentsNode(std::string a,Node* parent1);
 		virtual float func(float x);
 		float geteval();
 		int getParentsNum();
@@ -34,8 +34,8 @@ template<float func(float f)>
 class Opn:public Node
 {
 	public:
-		Node& p1;//parents
-		Opn(std::string a,Node& parent1)
+		Node *p1;//parents
+		Opn(std::string a,Node* parent1)
 		{
 			name=a;
 			p1=parent1;
@@ -46,7 +46,7 @@ class Opn:public Node
 			else
 			{
 				calculated=1;
-				tempeval=func(p1.geteval());
+				tempeval=func(p1->geteval());
 				return tempeval;
 			}
 		}
@@ -59,8 +59,8 @@ template<float func(float f1,float f2)>
 class Tpn:public Node
 {
 	public:
-		Node& p1,p2;//parents
-		Tpn(std::string a,Node& parent1,Node& parent2)
+		Node *p1,*p2;//parents
+		Tpn(std::string a,Node* parent1,Node* parent2)
 		{
 			name=a;
 			p1=parent1;
@@ -72,7 +72,7 @@ class Tpn:public Node
 			else
 			{
 				calculated=1;
-				tempeval=func(p1.geteval(),p2.geteval());
+				tempeval=func(p1->geteval(),p2->geteval());
 				return tempeval;
 			}
 		}
@@ -80,22 +80,23 @@ class Tpn:public Node
 		{
 			return 2;
 		}
+		TwoParentsNode(std::string a,Node* parent1,Node* parent2);
 };
 class TwoParentsNode:public Node
 {
 	public:
-		Node& p1,p2;//parents
+		Node *p1,*p2;//parents
 		virtual float func(float x,float y);
 		float geteval();
 		int getParentsNum();
-		TwoParentsNode(std::string a,Node& parent1,Node& parent2):Node(name),p1,p2{}
+		TwoParentsNode(std::string a,Node* parent1,Node* parent2);
 };
 class ThreeParentsNode:public Node
 {
 	public:
-		Node& p1,p2,p3;//parents
+		Node *p1,*p2,*p3;//parents
 		virtual float func(float x,float y,float z);
 		float geteval();
 		int getParentsNum();
-		ThreeParentsNode(std::string a,Node& parent1,Node& parent2,Node& parent3);
+		ThreeParentsNode(std::string a,Node* parent1,Node* parent2,Node* parent3);
 };

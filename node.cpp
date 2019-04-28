@@ -23,7 +23,7 @@ float OneParentsNode::geteval()
     else
     {
         calculated=1;
-        tempeval=func(p1.geteval());
+        tempeval=func(p1->geteval());
         return tempeval;
     }
 }
@@ -32,7 +32,7 @@ int OneParentsNode::getParentsNum()
     return 1;
 }
 float OneParentsNode::func(float x){}
-OneParentsNode::OneParentsNode(std::string a,Node& parent1)
+OneParentsNode::OneParentsNode(std::string a,Node* parent1)
 {
     name=a;
     p1=parent1;
@@ -46,7 +46,7 @@ float TwoParentsNode::geteval()
     else
     {
         calculated=1;
-        tempeval=func(p1.geteval(),p2.geteval());
+        tempeval=func(p1->geteval(),p2->geteval());
         return tempeval;
     }
 }
@@ -54,7 +54,7 @@ int TwoParentsNode::getParentsNum()
 {
     return 2;
 }
-TwoParentsNode::TwoParentsNode(std::string a,Node& parent1,Node& parent2)
+TwoParentsNode::TwoParentsNode(std::string a,Node* parent1,Node* parent2)
 {
     name=a;
     p1=parent1;
@@ -67,7 +67,7 @@ float ThreeParentsNode::geteval()
     else
     {
         calculated=1;
-        tempeval=func(p1.geteval(),p2.geteval(),p3.geteval());
+        tempeval=func(p1->geteval(),p2->geteval(),p3->geteval());
         return tempeval;
     }
 }
@@ -75,7 +75,7 @@ int ThreeParentsNode::getParentsNum()
 {
     return 3;
 }
-ThreeParentsNode::ThreeParentsNode(std::string a,Node& parent1,Node& parent2,Node& parent3)
+ThreeParentsNode::ThreeParentsNode(std::string a,Node* parent1,Node* parent2,Node* parent3)
 {
     name=a;
     p1=parent1;
