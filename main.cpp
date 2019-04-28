@@ -16,7 +16,6 @@ int main()
 	int n,m,q;
 	string name,type,tmp;
 	float value;
-	float outvalue[100];
 	cin>>n;
 	for(int i=0; i<n; i++)
 	{
@@ -154,8 +153,9 @@ int main()
 				phnames.push_back(x);
 				phvalues.push_back(y);
 			}
-			outvalue[i]=gra.eval(name,phcount,phnames,phvalues);
-			if(!isnan(outvalue[i]))cout<<fixed<<setprecision(4)<<outvalue[i]<<endl;
+			float ov = gra.eval(name,phcount,phnames,phvalues);
+			if(!isnan(ov))
+				cout<<fixed<<setprecision(4)<<ov<<endl;
 		}
 		else if(type=="SETCONSTANT")
 		{
@@ -168,7 +168,7 @@ int main()
 			cin>>name;
 			int t;
 			cin>>t;
-			gra.setvariable(name,outvalue[t-1]);
+			gra.setvariable(name,gra.lookupanswer(t));
 		}
 		else assert(0);
 		

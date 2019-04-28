@@ -12,12 +12,15 @@
 class Graph
 {
 	std::map<std::string,Node*> nodes;
-	int size;
+	std::map<int,float> outvalue;
+	int size,cnt;
 	public:
+		Graph();
 		Node* operator[] (const string str);//获取节点
 		Node* getNamePointer(string str);
 		void push(std::string str,Node* newnode);
 		void reset();
 		float eval(string nodename,int placeholdernum,std::vector<string> placeholdernames,std::vector<float> placeholdervalue);
 		void setvariable(string vname,float value);
+		float lookupanswer(int t);
 };

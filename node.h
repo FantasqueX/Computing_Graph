@@ -2,7 +2,6 @@
 #include <iostream>
 #include <string>
 #include <cmath>
-const float NaN=0.0/0.0;
 class Node
 {
 	public:

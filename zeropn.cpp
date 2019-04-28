@@ -13,7 +13,7 @@ float Placeholder::geteval()
     else
     {
         std::cout<<"ERROR: Placeholder missing"<<std::endl;
-        return NaN;
+        return NAN;
     }
 }
 Placeholder::Placeholder()

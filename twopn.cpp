@@ -1,4 +1,5 @@
 #include "twopn.h"
+#include <cmath>
 float sum::func(float x,float y)
 {
     return x+y;
@@ -16,7 +17,7 @@ float division::func(float x,float y)
     if(y==0)
     {
         std::cout<<"ERROR: Division by zero";
-        return NaN;
+        return NAN;
     }
     else
         return x/y;
