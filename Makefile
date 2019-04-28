@@ -1,5 +1,3 @@
-all:main.exe
-
 main.exe:main.o node.o onepn.o twopn.o threepn.o zeropn.o graph.o
 	g++ main.o node.o onepn.o twopn.o threepn.o zeropn.o graph.o -o main.out
 node.o: node.h node.cpp
