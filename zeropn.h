@@ -11,7 +11,7 @@ class Placeholder:public ZeroParentsNode
 		float value;
 		void setvalue(float a);
 		float geteval();
-		Placeholder(string a);
+		Placeholder();
 };
 class Constant:public ZeroParentsNode
 {
@@ -19,7 +19,7 @@ class Constant:public ZeroParentsNode
 	public:
 		float geteval();
 		virtual void reset();
-		Constant(string a,float b);
+		Constant(float b);
 };
 class Variable:public ZeroParentsNode
 {
@@ -28,5 +28,5 @@ class Variable:public ZeroParentsNode
 		void setvalue(float a);
 		float geteval();
 		virtual void reset();
-		Variable(std::string a,float b);
+		Variable(float b);
 };

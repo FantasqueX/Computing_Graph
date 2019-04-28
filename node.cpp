@@ -32,9 +32,8 @@ int OneParentsNode::getParentsNum()
     return 1;
 }
 float OneParentsNode::func(float x){}
-OneParentsNode::OneParentsNode(std::string a,Node* parent1)
+OneParentsNode::OneParentsNode(Node* parent1)
 {
-    name=a;
     p1=parent1;
 }
 float TwoParentsNode::func(float x,float y)
@@ -54,9 +53,8 @@ int TwoParentsNode::getParentsNum()
 {
     return 2;
 }
-TwoParentsNode::TwoParentsNode(std::string a,Node* parent1,Node* parent2)
+TwoParentsNode::TwoParentsNode(Node* parent1,Node* parent2)
 {
-    name=a;
     p1=parent1;
     p2=parent2;
 }
@@ -75,9 +73,8 @@ int ThreeParentsNode::getParentsNum()
 {
     return 3;
 }
-ThreeParentsNode::ThreeParentsNode(std::string a,Node* parent1,Node* parent2,Node* parent3)
+ThreeParentsNode::ThreeParentsNode(Node* parent1,Node* parent2,Node* parent3)
 {
-    name=a;
     p1=parent1;
     p2=parent2;
     p3=parent3;

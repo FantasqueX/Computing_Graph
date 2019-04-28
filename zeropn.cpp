@@ -16,18 +16,18 @@ float Placeholder::geteval()
         return NaN;
     }
 }
-Placeholder::Placeholder(std::string a)
+Placeholder::Placeholder()
 {
-    name=a;
 }
 float Constant::geteval()
 {
     return value;
 }
-void Constant::reset() {}
-Constant::Constant(std::string a,float b)
+void Constant::reset()
 {
-    name=a;
+}
+Constant::Constant(float b)
+{
     value=b;
 }
 void Variable::setvalue(float a)
@@ -39,8 +39,7 @@ float Variable::geteval()
     return value;
 }
 void Variable::reset() {}
-Variable::Variable(std::string a,float b)
+Variable::Variable(float b)
 {
-    name=a;
     value=b;
 }

@@ -1,12 +1,13 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include <math.h>
+#include <cmath>
 #include "node.h"
 class Print:public OneParentsNode
 {
+	std::string nm;
 	public:
-		using OneParentsNode::OneParentsNode;
+		Print(std::string str, Node* parent);
 		float func(float x);
 };
 class Sin:public OneParentsNode

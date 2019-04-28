@@ -2,68 +2,37 @@
 #include<iostream>
 #include <vector>
 #include <string>
-int Graph::getid(std::string str)
+#include <map>
+Node* Graph::operator[](const std::string str)
 {
-    for (int i = 0;i < used; ++i)
-    {
-        if(str == nodes[i]->name)
-            return i;
-    }
-    return -1;
+    auto it = nodes.find(str);
+    if (it==nodes.end())
+        return nullptr;
+    return it->second;
 }
-Graph::Graph(int sz)
+void Graph::push(std::string str,Node* newnode)
 {
-    maxsize=sz;
-    nodes=new Node*[sz];
-}
-Graph::~Graph()
-{
-    delete[] nodes;
-}
-Node* Graph::getNamePointer(string str)
-{
-    for(int i=0; i<used; i++)
-    {
-        if(str==nodes[i]->name)
-            return nodes[i];
-    }
-    return nullptr;
-}
-Node* Graph::operator[](const string str)
-{
-    return getNamePointer(str);
-}
-int Graph::push(Node* newnode)
-{
-    if(getid(newnode->name)!=-1)
+    if(nodes[str]!=nullptr)
     {
         std::cout<<"Same name!"<<std::endl;
+        return ;
     }
-    if(used==maxsize)
-    {
-        std::cout<<"Max size!"<<std::endl;
-        return 1;
-    }
-    nodes[used]=newnode;
-	    used++;
-	    return 0;
+    nodes[str] = newnode;
 }
 void Graph::reset()
 {
-    for(int i=0; i<used; i++)
-    {
-        nodes[i]->reset();//����variable��constant 
-    }
+    for(auto it=nodes.begin(); it != nodes.end(); it++)
+        it->second->reset();
 }
 float Graph::eval(string nodename,int placeholdernum,std::vector<string> placeholdernames,std::vector<float> placeholdervalue)
 {
     reset();
     for(int i=0;i<placeholdernum;i++)
-        getNamePointer(placeholdernames[i])->setvalue(placeholdervalue[i]);
+        nodes[placeholdernames[i]]->setvalue(placeholdervalue[i]);
         
-    return getNamePointer(nodename)->geteval();
+    return nodes[nodename]->geteval();
 }
 void Graph::setvariable(string vname,float value)
 {
-    getNamePointer(vname)->setvalue(value);
+    nodes[vname]->setvalue(value);
 }

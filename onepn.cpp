@@ -1,7 +1,12 @@
 #include "onepn.h"
+#include <string>
+Print::Print(std::string str,Node* parent): OneParentsNode(parent) 
+{
+    nm = str;
+}
 float Print::func(float x)
 {
-    std::cout<<"Print Operator: "<<p1->name<<"="<<x<<std::endl;
+    std::cout<<"Print Operator: "<<nm<<"="<<x<<std::endl;
     return x;
 }
 float Sin::func(float x)

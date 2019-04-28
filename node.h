@@ -6,12 +6,10 @@ const float NaN=0.0/0.0;
 class Node
 {
 	public:
-		std::string name;
 		virtual float geteval();
 		virtual void setvalue(float a);
 		float tempeval;
 		bool calculated=0;
-		bool printable=0;
 		virtual void reset();
 };
 class ZeroParentsNode:public Node
@@ -25,7 +23,7 @@ class OneParentsNode:public Node
 {
 	public:
 		Node *p1;//parents
-		OneParentsNode(std::string a,Node* parent1);
+		OneParentsNode(Node* parent);
 		virtual float func(float x);	
 		float geteval();
 		int getParentsNum();
@@ -37,7 +35,7 @@ class TwoParentsNode:public Node
 		virtual float func(float x,float y);	
 		float geteval();
 		int getParentsNum();
-		TwoParentsNode(std::string a,Node* parent1,Node* parent2);
+		TwoParentsNode(Node* parent1,Node* parent2);
 };
 class ThreeParentsNode:public Node
 {
@@ -46,5 +44,5 @@ class ThreeParentsNode:public Node
 		virtual float func(float x,float y,float z);		
 		float geteval();
 		int getParentsNum();
-		ThreeParentsNode(std::string a,Node* parent1,Node* parent2,Node* parent3);
+		ThreeParentsNode(Node* parent1,Node* parent2,Node* parent3);
 };
