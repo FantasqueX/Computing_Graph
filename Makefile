@@ -1,7 +1,7 @@
 all:main.exe
 
 main.exe:main.o node.o onepn.o twopn.o threepn.o zeropn.o graph.o
-	g++ main.o node.o onepn.o twopn.o threepn.o zeropn.o graph.o -o main.exe
+	g++ main.o node.o onepn.o twopn.o threepn.o zeropn.o graph.o -o main.out
 node.o: node.h node.cpp
 	g++ -c node.cpp -o node.o
 onepn.o: node.h onepn.h onepn.cpp
@@ -17,4 +17,4 @@ graph.o: graph.h graph.cpp node.h onepn.h twopn.h threepn.h zeropn.h
 main.o: main.cpp node.h graph.h node.o onepn.o twopn.o threepn.o zeropn.o graph.o
 	g++ -c main.cpp -o main.o
 clean:
-	rm *.o *.exe
+	rm *.o *.out
