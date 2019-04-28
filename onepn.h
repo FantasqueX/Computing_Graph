@@ -9,33 +9,8 @@ class Print:public OneParentsNode
 		using OneParentsNode::OneParentsNode;
 		float func(float x);
 };
-class Sin:public OneParentsNode
-{
-	public:
-		using OneParentsNode::OneParentsNode;
-		float func(float x);
-};
-class Exp:public OneParentsNode
-{
-	public:
-		using OneParentsNode::OneParentsNode;
-		float func(float x);
-};
-class Log:public OneParentsNode
-{
-	public:
-		using OneParentsNode::OneParentsNode;
-		float func(float x);
-};
-class Tanh:public OneParentsNode
-{
-	public:
-		using OneParentsNode::OneParentsNode;
-		float func(float x);
-};
-class Sigmoid:public OneParentsNode
-{
-	public:
-		using OneParentsNode::OneParentsNode;
-		float func(float x);
-};
+float Sin(float x);
+float Exp(float x);
+float Log(float x);
+float Tanh(float x);
+float Sigmoid(float x);
