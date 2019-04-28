@@ -64,31 +64,31 @@ int main()
 		else if(p1=="SIN")
 		{
 			cin>>p2;
-			gra.push(new Sin(name,gra[p2]));
+			gra.push(new Opn<Sin>(name,gra[p2]));
 			continue;
 		}
 		else if(p1=="EXP")
 		{
 			cin>>p2;
-			gra.push(new Exp(name,gra[p2]));
+			gra.push(new Opn<Exp>(name,gra[p2]));
 			continue;
 		}
 		else if(p1=="LOG")
 		{
 			cin>>p2;
-			gra.push(new Log(name,gra[p2]));
+			gra.push(new Opn<Log>(name,gra[p2]));
 			continue;
 		}
 		else if(p1=="TANH")
 		{
 			cin>>p2;
-			gra.push(new Tanh(name,gra[p2]));
+			gra.push(new Opn<Tanh>(name,gra[p2]));
 			continue;
 		}
 		else if(p1=="SIGMOID")
 		{
 			cin>>p2;
-			gra.push(new Sigmoid(name,gra[p2]));
+			gra.push(new Opn<Sigmoid>(name,gra[p2]));
 			continue;
 		}
 		else
@@ -97,39 +97,39 @@ int main()
 			cin>>p2;
 			if(type=="+")
 			{
-				gra.push(new sum(name,gra[p1],gra[p2]));
+				gra.push(new Tpn<sum>(name,gra[p1],gra[p2]));
 			}
 			else if(type=="-")
 			{
-				gra.push(new subtraction(name,gra[p1],gra[p2]));
+				gra.push(new Tpn<subtraction>(name,gra[p1],gra[p2]));
 			}
 			else if(type=="*")
 			{
-				gra.push(new multiply(name,gra[p1],gra[p2]));
+				gra.push(new Tpn<multiply>(name,gra[p1],gra[p2]));
 			}
 			else if(type=="/")
 			{
-				gra.push(new division(name,gra[p1],gra[p2]));
+				gra.push(new Tpn<division>(name,gra[p1],gra[p2]));
 			}
 			else if(type==">")
 			{
-				gra.push(new GTR(name,gra[p1],gra[p2]));
+				gra.push(new Tpn<GTR>(name,gra[p1],gra[p2]));
 			}
 			else if(type=="<")
 			{
-				gra.push(new LSS(name,gra[p1],gra[p2]));
+				gra.push(new Tpn<LSS>(name,gra[p1],gra[p2]));
 			}
 			else if(type==">=")
 			{
-				gra.push(new GEQ(name,gra[p1],gra[p2]));
+				gra.push(new Tpn<GEQ>(name,gra[p1],gra[p2]));
 			}
 			else if(type=="<=")
 			{
-				gra.push(new LEQ(name,gra[p1],gra[p2]));
+				gra.push(new Tpn<LEQ>(name,gra[p1],gra[p2]));
 			}
 			else if(type=="==")
 			{
-				gra.push(new EQU(name,gra[p1],gra[p2]));
+				gra.push(new Tpn<EQU>(name,gra[p1],gra[p2]));
 			}
 			else assert(0);
 		}

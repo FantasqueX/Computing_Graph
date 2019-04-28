@@ -1,17 +1,17 @@
 #include "twopn.h"
-float sum::func(float x,float y)
+float sum(float x,float y)
 {
     return x+y;
 }
-float subtraction::func(float x,float y)
+float subtraction(float x,float y)
 {
     return x-y;
 }
-float multiply::func(float x,float y)
+float multiply(float x,float y)
 {
     return x*y;
 }
-float division::func(float x,float y)
+float division(float x,float y)
 {
     if(y==0)
     {
@@ -21,23 +21,23 @@ float division::func(float x,float y)
     else
         return x/y;
 }
-float EQU::func(float x,float y)
+float EQU(float x,float y)
 {
     return float(x==y);
 }
-float GTR::func(float x,float y)
+float GTR(float x,float y)
 {
     return float(x>y);
 }
-float GEQ::func(float x,float y)
+float GEQ(float x,float y)
 {
     return float(x>=y);
 }
-float LSS::func(float x,float y)
+float LSS(float x,float y)
 {
     return float(x<y);
 }
-float LEQ::func(float x,float y)
+float LEQ(float x,float y)
 {
     return float(x<=y);
 }
