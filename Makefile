@@ -1,7 +1,7 @@
 all:main.exe
 
 main.exe:main.o node.o onepn.o twopn.o threepn.o zeropn.o graph.o
-	$(CXX) main.o node.o onepn.o twopn.o threepn.o zeropn.o graph.o -o main.exe
+	$(CXX) main.o node.o onepn.o twopn.o threepn.o zeropn.o graph.o -o main
 node.o: node.cpp node.h 
 	$(CXX) -c node.cpp -o node.o
 onepn.o: onepn.cpp node.h onepn.h 
@@ -18,4 +18,4 @@ main.o: main.cpp node.h graph.h node.o onepn.o twopn.o threepn.o zeropn.o graph.
 	$(CXX) -c main.cpp -o main.o
 clean:
 	rm *.o 
-	rm *.exe
+	rm main

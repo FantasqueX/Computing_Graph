@@ -18,24 +18,26 @@ Node* Graph::operator[](const std::string str)
 
 void Graph::push(std::string str,Node* newnode)
 {
-    if(nodes[str]!=nullptr)
+    /*if(nodes[str]!=nullptr)
     {
         std::cout<<"Same name!"<<std::endl;
         return ;
-    }
+    }*/
     nodes[str] = newnode;
 }
 
-void Graph::reset()
+void Graph::reset(string nodename)
 {
-    for(auto it=nodes.begin(); it != nodes.end(); it++)
-        it->second->reset();
+  //  for(auto it=nodes.begin(); it != nodes.end(); it++)
+    //    it->second->reset();
+    nodes[nodename]->reset();
+    
 }
 
 float Graph::eval(string nodename, const map<string,float> &phMap)
 {
     ++cnt;
-    reset();
+    reset(nodename);
     for(auto iter=phMap.begin(); iter != phMap.end(); iter++)
         nodes[iter->first]->setvalue(iter->second);
     outvalue[cnt] = nodes[nodename]->geteval();
