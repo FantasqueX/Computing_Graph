@@ -1,10 +1,6 @@
 all:main
 
-<<<<<<< HEAD
 main:main.o node.o onepn.o twopn.o threepn.o zeropn.o graph.o
-=======
-main.exe:main.o node.o onepn.o twopn.o threepn.o zeropn.o graph.o
->>>>>>> 895d1d48c25cb7d0887bd6021983ed67e7d726dc
 	$(CXX) main.o node.o onepn.o twopn.o threepn.o zeropn.o graph.o -o main
 node.o: node.cpp node.h 
 	$(CXX) -c node.cpp -o node.o
