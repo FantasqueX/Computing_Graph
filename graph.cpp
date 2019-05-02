@@ -3,12 +3,13 @@
 #include <vector>
 #include <string>
 #include <map>
+
 Graph::Graph()
 {
     cnt = 0;
 }
 
-Node* Graph::operator[](const std::string str)
+Node* Graph::operator[](const string& str)
 {
     auto it = nodes.find(str);
     if (it==nodes.end())
@@ -16,12 +17,13 @@ Node* Graph::operator[](const std::string str)
     return it->second;
 }
 
-void Graph::push(std::string str,Node* newnode)
+void Graph::pushNode(std::string str,Node* newnode)
 {
     if(nodes[str]!=nullptr)
     {
-        std::cout<<"Same name!"<<std::endl;
-        return ;
+        nodes[str+"_old"] = nodes[str];
+        // nodes[str] = 
+        // return ;
     }
     nodes[str] = newnode;
 }

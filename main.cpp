@@ -25,16 +25,16 @@ int main()
 		if(type=="C")
 		{
 			cin>>value;
-			gra.push(name,new Constant(value));
+			gra.pushNode(name,new Constant(value));
 		}
 		else if(type=="V")
 		{
 			cin>>value;
-			gra.push(name,new Variable(value));
+			gra.pushNode(name,new Variable(value));
 		}
 		else if(type=="P")
 		{
-			gra.push(name,new Placeholder);
+			gra.pushNode(name,new Placeholder);
 		}
 		else assert(0);
 	}
@@ -52,43 +52,43 @@ int main()
 			cin>>p2;
 			cin>>p3;
 			cin>>p4;
-			gra.push(name,new Cond(gra[p2],gra[p3],gra[p4]));
+			gra.pushNode(name,new Cond(gra[p2],gra[p3],gra[p4]));
 			continue;
 		}
 		else if(p1=="PRINT")
 		{
 			cin>>p2;
-			gra.push(name,new Print(p2,gra[p2]));
+			gra.pushNode(name,new Print(p2,gra[p2]));
 			continue;
 		}
 		else if(p1=="SIN")
 		{
 			cin>>p2;
-			gra.push(name,new Sin(gra[p2]));
+			gra.pushNode(name,new Sin(gra[p2]));
 			continue;
 		}
 		else if(p1=="EXP")
 		{
 			cin>>p2;
-			gra.push(name,new Exp(gra[p2]));
+			gra.pushNode(name,new Exp(gra[p2]));
 			continue;
 		}
 		else if(p1=="LOG")
 		{
 			cin>>p2;
-			gra.push(name,new Log(gra[p2]));
+			gra.pushNode(name,new Log(gra[p2]));
 			continue;
 		}
 		else if(p1=="TANH")
 		{
 			cin>>p2;
-			gra.push(name,new Tanh(gra[p2]));
+			gra.pushNode(name,new Tanh(gra[p2]));
 			continue;
 		}
 		else if(p1=="SIGMOID")
 		{
 			cin>>p2;
-			gra.push(name,new Sigmoid(gra[p2]));
+			gra.pushNode(name,new Sigmoid(gra[p2]));
 			continue;
 		}
 		else
@@ -97,39 +97,39 @@ int main()
 			cin>>p2;
 			if(type=="+")
 			{
-				gra.push(name,new sum(gra[p1],gra[p2]));
+				gra.pushNode(name,new sum(gra[p1],gra[p2]));
 			}
 			else if(type=="-")
 			{
-				gra.push(name,new subtraction(gra[p1],gra[p2]));
+				gra.pushNode(name,new subtraction(gra[p1],gra[p2]));
 			}
 			else if(type=="*")
 			{
-				gra.push(name,new multiply(gra[p1],gra[p2]));
+				gra.pushNode(name,new multiply(gra[p1],gra[p2]));
 			}
 			else if(type=="/")
 			{
-				gra.push(name,new division(gra[p1],gra[p2]));
+				gra.pushNode(name,new division(gra[p1],gra[p2]));
 			}
 			else if(type==">")
 			{
-				gra.push(name,new GTR(gra[p1],gra[p2]));
+				gra.pushNode(name,new GTR(gra[p1],gra[p2]));
 			}
 			else if(type=="<")
 			{
-				gra.push(name,new LSS(gra[p1],gra[p2]));
+				gra.pushNode(name,new LSS(gra[p1],gra[p2]));
 			}
 			else if(type==">=")
 			{
-				gra.push(name,new GEQ(gra[p1],gra[p2]));
+				gra.pushNode(name,new GEQ(gra[p1],gra[p2]));
 			}
 			else if(type=="<=")
 			{
-				gra.push(name,new LEQ(gra[p1],gra[p2]));
+				gra.pushNode(name,new LEQ(gra[p1],gra[p2]));
 			}
 			else if(type=="==")
 			{
-				gra.push(name,new EQU(gra[p1],gra[p2]));
+				gra.pushNode(name,new EQU(gra[p1],gra[p2]));
 			}
 			else assert(0);
 		}
