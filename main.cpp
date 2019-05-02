@@ -11,14 +11,14 @@
 
 using namespace std;
 
-map <string,float> placeHolderMap;
+map <string,float> placeholderMap;//placeholder的名字与数值一一对应，作为eval的参数
 int main()
 {
-	Graph gra;
-	int n,m,q;
-	string name,type,tmp;
-	float value;
-	cin>>n;
+	Graph gra;//计算图
+	int n,m,q;//样例中输入的三种操作的个数
+	string name,type,tmp;//用到的临时字符串 
+	float value;//用到的临时float
+	cin>>n;//C V P三种节点数
 	for(int i=0; i<n; i++)
 	{
 		cin>>name;
@@ -40,13 +40,13 @@ int main()
 		else assert(0);
 	}
 
-	cin>>m;
+	cin>>m;//运算节点数
 	for(int i=0; i<m; i++)
 	{
 		cin>>name;
 		cin>>tmp;
-		assert(tmp=="=");
-		string p1,p2,p3,p4;
+		assert(tmp=="=");//断言
+		string p1,p2,p3,p4;//处理输入 
 		cin>>p1;
 		if(p1=="COND")
 		{
@@ -142,7 +142,7 @@ int main()
 	{
 		string command;
 		getline(cin,command);
-		if(command.empty())
+		if(command.empty())//跳过空行
 		{
 			i--;
 			continue;
@@ -151,7 +151,7 @@ int main()
 		ss>>type;
 		if(type=="EVAL")
 		{
-			placeHolderMap.clear();
+			placeholderMap.clear();
 			ss>>name;
 			string phcountstr;
 			ss>>phcountstr;
@@ -167,10 +167,10 @@ int main()
 				string x;
 				float y;
 				ss>>x>>y;
-				placeHolderMap.insert(make_pair(x,y));
+				placeholderMap.insert(make_pair(x,y));
 			}
 
-			float ov = gra.eval(name,placeHolderMap);
+			float ov = gra.eval(name,placeholderMap);
 			if(!isnan(ov))
 				cout << fixed << setprecision(4) <<ov<<endl;
 		}

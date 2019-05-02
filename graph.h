@@ -12,19 +12,14 @@ extern bool asserted;
 class Graph
 {
 	std::map<std::string,Node*> nodes;
-	std::map<int,float> outvalue;//计算结果历史纪录
-	int size,cnt;
-	// void pushNode(std::string str,Node* newnode);
+	std::map<int,float> outvalue;//eval结果历史纪录，key储存eval是第几次操作，value储存eval结果
+	int cnt;//总操作次数
 	public:
 		Graph();
 		Node* operator[] (const string& str);//获取节点
-		void pushNode(std::string str,Node* newnode);
-		// void push(const std::string &newNodeName,const string& OpNodetype ); //OneParentNode push
-		// void push(const std::string &newNodeName,const string& OpNodetype, const string& parentNodeName );
-		// void push(const std::string &newNodeName,const string& OpNodetype, const string& parentNodeName1, const string& parentNodeName2 );
-		// void push(const std::string &newNodeName,const string& OpNodetype, const string& parentNodeName1,const string& parentNodeName2,const string& parentNodeName3 ); 
-		void reset(string nodename);
-		float eval(string nodename, const map<string,float> &phMap);
-		void setvariable(string vname,float value);
-		float lookupanswer(int t);
+		void pushNode(std::string str,Node* newnode);//加入新节点
+		void reset(string nodename);//清除上一次计算的结果(内部递归清除所有计算过程)
+		float eval(string nodename, const map<string,float> &phMap);//传入placeholder列表进行计算
+		void setvariable(string vname,float value);//设置variable的值
+		float lookupanswer(int t);//获取第t次操作的结果
 };
