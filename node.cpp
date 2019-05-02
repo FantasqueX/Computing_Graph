@@ -12,6 +12,25 @@ void Node::reset()
     calculated=0;
 }
 
+void OneParentNode::reset()
+{
+	p1->reset();
+    calculated=0;
+}
+void TwoParentsNode::reset()
+{
+	p1->reset();
+	p2->reset();
+    calculated=0;
+}
+void ThreeParentsNode::reset()
+{
+	p1->reset();
+	p2->reset();
+	p3->reset();
+    calculated=0;
+}
+
 float ZeroParentNode::geteval()
 {
     return 1;

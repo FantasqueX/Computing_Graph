@@ -3,6 +3,7 @@
 #include <string>
 #include <cmath>
 #include "node.h"
+extern bool asserted;
 class Print:public OneParentNode
 {
 	std::string nm;

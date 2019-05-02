@@ -3,6 +3,7 @@
 #include <string>
 #include <math.h>
 #include "node.h"
+extern bool asserted;
 class sum:public TwoParentsNode
 {
 	public:

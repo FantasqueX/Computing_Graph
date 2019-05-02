@@ -3,7 +3,11 @@
 #include <vector>
 #include <string>
 #include <map>
+<<<<<<< HEAD
 
+=======
+bool asserted=0;//ĳһ�������Ƿ��Ѿ�����error�������ظ����
+>>>>>>> 895d1d48c25cb7d0887bd6021983ed67e7d726dc
 Graph::Graph()
 {
     cnt = 0;
@@ -28,16 +32,19 @@ void Graph::pushNode(std::string str,Node* newnode)
     nodes[str] = newnode;
 }
 
-void Graph::reset()
+void Graph::reset(string nodename)
 {
-    for(auto it=nodes.begin(); it != nodes.end(); it++)
-        it->second->reset();
+  //  for(auto it=nodes.begin(); it != nodes.end(); it++)
+    //    it->second->reset();
+    asserted=0;
+    nodes[nodename]->reset();
+    
 }
 
 float Graph::eval(string nodename, const map<string,float> &phMap)
 {
     ++cnt;
-    reset();
+    reset(nodename);
     for(auto iter=phMap.begin(); iter != phMap.end(); iter++)
         nodes[iter->first]->setvalue(iter->second);
     outvalue[cnt] = nodes[nodename]->geteval();
