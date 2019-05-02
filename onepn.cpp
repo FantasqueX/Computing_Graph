@@ -6,7 +6,7 @@ Print::Print(std::string str,Node* parent): OneParentNode(parent)
 }
 float Print::func(float x)
 {
-    std::cout<<"PRINT Operator: "<<nm<<"="<<x<<std::endl;
+    std::cout<<"PRINT operator: "<<nm<<"="<<x<<std::endl;
     return x;
 }
 float Sin::func(float x)
