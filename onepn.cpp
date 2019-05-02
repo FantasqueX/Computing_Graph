@@ -1,6 +1,6 @@
 #include "onepn.h"
 #include <string>
-Print::Print(std::string str,Node* parent): OneParentsNode(parent) 
+Print::Print(std::string str,Node* parent): OneParentNode(parent) 
 {
     nm = str;
 }

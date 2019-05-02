@@ -7,6 +7,7 @@ Graph::Graph()
 {
     cnt = 0;
 }
+
 Node* Graph::operator[](const std::string str)
 {
     auto it = nodes.find(str);
@@ -14,6 +15,7 @@ Node* Graph::operator[](const std::string str)
         return nullptr;
     return it->second;
 }
+
 void Graph::push(std::string str,Node* newnode)
 {
     if(nodes[str]!=nullptr)
@@ -23,11 +25,13 @@ void Graph::push(std::string str,Node* newnode)
     }
     nodes[str] = newnode;
 }
+
 void Graph::reset()
 {
     for(auto it=nodes.begin(); it != nodes.end(); it++)
         it->second->reset();
 }
+
 float Graph::eval(string nodename,int placeholdernum,std::vector<string> placeholdernames,std::vector<float> placeholdervalue)
 {
     ++cnt;
@@ -37,11 +41,13 @@ float Graph::eval(string nodename,int placeholdernum,std::vector<string> placeho
     outvalue[cnt] = nodes[nodename]->geteval();
     return nodes[nodename]->geteval();
 }
+
 void Graph::setvariable(string vname,float value)
 {
     ++cnt;
     nodes[vname]->setvalue(value);
 }
+
 float Graph::lookupanswer(int t)
 {
     return outvalue[t];

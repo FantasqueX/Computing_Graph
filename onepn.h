@@ -3,40 +3,40 @@
 #include <string>
 #include <cmath>
 #include "node.h"
-class Print:public OneParentsNode
+class Print:public OneParentNode
 {
 	std::string nm;
 	public:
 		Print(std::string str, Node* parent);
 		float func(float x);
 };
-class Sin:public OneParentsNode
+class Sin:public OneParentNode
 {
 	public:
-		using OneParentsNode::OneParentsNode;
+		using OneParentNode::OneParentNode;
 		float func(float x);
 };
-class Exp:public OneParentsNode
+class Exp:public OneParentNode
 {
 	public:
-		using OneParentsNode::OneParentsNode;
+		using OneParentNode::OneParentNode;
 		float func(float x);
 };
-class Log:public OneParentsNode
+class Log:public OneParentNode
 {
 	public:
-		using OneParentsNode::OneParentsNode;
+		using OneParentNode::OneParentNode;
 		float func(float x);
 };
-class Tanh:public OneParentsNode
+class Tanh:public OneParentNode
 {
 	public:
-		using OneParentsNode::OneParentsNode;
+		using OneParentNode::OneParentNode;
 		float func(float x);
 };
-class Sigmoid:public OneParentsNode
+class Sigmoid:public OneParentNode
 {
 	public:
-		using OneParentsNode::OneParentsNode;
+		using OneParentNode::OneParentNode;
 		float func(float x);
 };

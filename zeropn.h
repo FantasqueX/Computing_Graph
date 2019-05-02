@@ -4,7 +4,8 @@
 #include <cmath>
 #include "node.h"
 using namespace std;
-class Placeholder:public ZeroParentsNode
+
+class Placeholder:public ZeroParentNode
 {
 	public:
 		static float valuelist;
@@ -13,7 +14,8 @@ class Placeholder:public ZeroParentsNode
 		float geteval();
 		Placeholder();
 };
-class Constant:public ZeroParentsNode
+
+class Constant:public ZeroParentNode
 {
 		float value;
 	public:
@@ -21,7 +23,8 @@ class Constant:public ZeroParentsNode
 		virtual void reset();
 		Constant(float b);
 };
-class Variable:public ZeroParentsNode
+
+class Variable:public ZeroParentNode
 {
 	public:
 		float value;

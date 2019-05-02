@@ -17,4 +17,4 @@ graph.o: graph.cpp graph.h  node.h onepn.h twopn.h threepn.h zeropn.h
 main.o: main.cpp node.h graph.h node.o onepn.o twopn.o threepn.o zeropn.o graph.o
 	$(CXX) -c main.cpp -o main.o
 clean:
-	del *.o *.exe
+	rm *.o *.exe
