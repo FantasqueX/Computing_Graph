@@ -53,13 +53,6 @@ class ThreeParentsNode:public Node
 		ThreeParentsNode(Node* parent1,Node* parent2,Node* parent3);
 };
 
-template<float f(float x,)>
-class Opn:public OneParentNode
-{
-	using OneParentNode::OneParentNode;
-	float func(float x){return f(x);}
-};
-
 template<float f(float x)>
 class Opn:public OneParentNode
 {
