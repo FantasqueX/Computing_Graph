@@ -16,7 +16,7 @@ float division::func(float x,float y)
 {
     if(y==0)
     {
-        std::cout<<"ERROR: Division by zero";
+        std::cout<<"ERROR: Division by zero"<<std::endl;
         return NAN;
     }
     else
