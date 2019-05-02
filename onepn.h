@@ -6,7 +6,7 @@
 extern bool asserted;
 class Print:public OneParentNode
 {
-	std::string nm;
+	std::string nm;//¸¸½ÚµãÃû 
 	public:
 		Print(std::string str, Node* parent);
 		float func(float x);

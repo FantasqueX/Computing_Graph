@@ -38,3 +38,24 @@ float Sigmoid::func(float x)
 {
 	return (tanh(x/2)+1)/2;
 }
+/*
+创建新的单变量函数的方法:
+例:方法1:
+class Sqr:public OneParentNode
+{
+	public:
+		using OneParentNode::OneParentNode;
+		float func(float x)
+		{
+			return x*x;
+		}
+};
+gra.push(节点名,new Sqr(gra[父节点名]));(gra为Graph类的实例)
+
+方法2:
+float Sqr(float x)
+{
+	return x*x;
+}
+gra.push(节点名,new Opn<Sqr>(gra[父节点名]));
+*/ 

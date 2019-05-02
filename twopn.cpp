@@ -51,3 +51,20 @@ float LEQ::func(float x,float y)
 	if(isnan(x)||isnan(y))return NAN;
 	return float(x<=y);
 }
+/*
+创建新的双变量函数的方法:
+例:方法1:
+class Pow:public TwoParentsNode
+{
+	public:
+		using TwoParentsNode::TwoParentsNode;
+		float func(float x,float y)
+		{
+			return std::pow(x,y);
+		}
+};
+gra.push(节点名,new Pow(gra[父节点名1],gra[父节点名2]));(gra为Graph类的实例) 
+
+方法2:
+gra.push(节点名,new Tpn<std::pow>(gra[父节点名1],gra[父节点名2]));
+*/

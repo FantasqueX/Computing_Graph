@@ -3,7 +3,6 @@
 #include <cassert>
 #include <iomanip>
 #include <sstream>
-// #include <vector>
 #include <map>
 #include "node.h"
 #include "graph.h"
@@ -11,14 +10,14 @@
 
 using namespace std;
 
-map <string,float> placeHolderMap;
+map <string,float> placeHolderMap;//placeholder的名字与数值一一对应，作为eval的参数 
 int main()
 {
-	Graph gra;
-	int n,m,q;
-	string name,type,tmp;
-	float value;
-	cin>>n;
+	Graph gra;//计算图 
+	int n,m,q;//样例中输入的三种操作的个数 
+	string name,type,tmp;//用到的临时字符串 
+	float value;//用到的临时float 
+	cin>>n;//C V P三种节点 
 	for(int i=0; i<n; i++)
 	{
 		cin>>name;
@@ -26,46 +25,46 @@ int main()
 		if(type=="C")
 		{
 			cin>>value;
-			gra.push(name,new Constant(value));
+			gra.push(name,new Constant(value));//创建新的Constant 
 		}
 		else if(type=="V")
 		{
 			cin>>value;
-			gra.push(name,new Variable(value));
+			gra.push(name,new Variable(value));//创建新的Variable
 		}
 		else if(type=="P")
 		{
-			gra.push(name,new Placeholder);
+			gra.push(name,new Placeholder);//创建新的PlaceHolder
 		}
-		else assert(0);
+		else assert(0);//输入数据有误 
 	}
 
-	cin>>m;
+	cin>>m;//运算节点 
 	for(int i=0; i<m; i++)
 	{
 		cin>>name;
 		cin>>tmp;
 		assert(tmp=="=");
-		string p1,p2,p3,p4;
+		string p1,p2,p3,p4;//处理输入样例 
 		cin>>p1;
 		if(p1=="COND")
 		{
 			cin>>p2;
 			cin>>p3;
 			cin>>p4;
-			gra.push(name,new Cond(gra[p2],gra[p3],gra[p4]));
+			gra.push(name,new Cond(gra[p2],gra[p3],gra[p4]));//创建新的Cond 
 			continue;
 		}
 		else if(p1=="PRINT")
 		{
 			cin>>p2;
-			gra.push(name,new Print(p2,gra[p2]));
+			gra.push(name,new Print(p2,gra[p2]));//创建新的Print
 			continue;
 		}
 		else if(p1=="SIN")
 		{
 			cin>>p2;
-			gra.push(name,new Opn<sin>(gra[p2]));
+			gra.push(name,new Sin(gra[p2]));//以下是创建各种单变量函数 
 			continue;
 		}
 		else if(p1=="EXP")
@@ -98,7 +97,7 @@ int main()
 			cin>>p2;
 			if(type=="+")
 			{
-				gra.push(name,new sum(gra[p1],gra[p2]));
+				gra.push(name,new sum(gra[p1],gra[p2]));//以下是创建各种双变量函数 
 			}
 			else if(type=="-")
 			{
@@ -132,17 +131,16 @@ int main()
 			{
 				gra.push(name,new EQU(gra[p1],gra[p2]));
 			}
-			else assert(0);
+			else assert(0);//输入数据有误 
 		}
 	}
 
-	cin>>q;
-//	int t=0;
+	cin>>q;//Eval SetConstant SetAnswer 
 	for(int i=0; i<q; i++)
 	{
 		string command;
 		getline(cin,command);
-		if(command.empty())
+		if(command.empty())//跳过空行 
 		{
 			i--;
 			continue;
@@ -151,18 +149,18 @@ int main()
 		ss>>type;
 		if(type=="EVAL")
 		{
-			placeHolderMap.clear();
+			placeHolderMap.clear();//清空placeholder列表 
 			ss>>name;
 			string phcountstr;
 			ss>>phcountstr;
 			int phcount=0;
-			if(!phcountstr.empty())
+			if(!phcountstr.empty())//判断是否有placeholder 
 			{
 				phcount=stoi(phcountstr);
 			}
 
 			//		cout<<phcountstr<<endl;
-			for(int j=0; j<phcount; j++)
+			for(int j=0; j<phcount; j++)//读取placeholder列表 
 			{
 				string x;
 				float y;
@@ -171,22 +169,22 @@ int main()
 			}
 
 			float ov = gra.eval(name,placeHolderMap);
-			if(!isnan(ov))
+			if(!isnan(ov))//如果计算结果为nan，则计算过程中遇到错误，不需要输出结果 
 				cout << fixed << setprecision(4) <<ov<<endl;
 		}
 		else if(type=="SETCONSTANT")
 		{
 			ss>>name;
 			ss>>value;
-			gra.setvariable(name,value);
+			gra.setvariable(name,value);//把name节点的值设为value 
 		}
 		else if(type=="SETANSWER")
 		{
 			ss>>name;
 			int t;
 			ss>>t;
-			gra.setvariable(name,gra.lookupanswer(t));
+			gra.setvariable(name,gra.lookupanswer(t));//把name节点的值设为gra.lookupanswer(t)(第t次计算的结果) 
 		}
-		else assert(0);
+		else assert(0);//输入数据有误 
 	}
 }

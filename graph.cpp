@@ -3,11 +3,7 @@
 #include <vector>
 #include <string>
 #include <map>
-bool asserted=0;//某一次运算是否已经给出error，避免重复输出
-Graph::Graph()
-{
-    cnt = 0;
-}
+bool asserted=0;//某一次eval是否已经给出error，避免重复输出
 
 Node* Graph::operator[](const std::string str)
 {
@@ -19,34 +15,26 @@ Node* Graph::operator[](const std::string str)
 
 void Graph::push(std::string str,Node* newnode)
 {
-    /*if(nodes[str]!=nullptr)
-    {
-        std::cout<<"Same name!"<<std::endl;
-        return ;
-    }*/
     nodes[str] = newnode;
 }
 
 void Graph::reset(string nodename)
 {
-  //  for(auto it=nodes.begin(); it != nodes.end(); it++)
-    //    it->second->reset();
     asserted=0;
     nodes[nodename]->reset();
-    
 }
 
 float Graph::eval(string nodename, const map<string,float> &phMap)
 {
     ++cnt;
-    reset(nodename);
-    for(auto iter=phMap.begin(); iter != phMap.end(); iter++)
+    reset(nodename); 
+    for(auto iter=phMap.begin(); iter != phMap.end(); iter++)//给placeholder赋值 
         nodes[iter->first]->setvalue(iter->second);
     outvalue[cnt] = nodes[nodename]->geteval();
-    return nodes[nodename]->geteval();
+    return outvalue[cnt];
 }
 
-void Graph::setvariable(string vname,float value)
+void Graph::setvariable(string vname,float value) 
 {
     ++cnt;
     nodes[vname]->setvalue(value);

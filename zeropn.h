@@ -10,10 +10,9 @@ class Placeholder:public ZeroParentNode
 {
 	public:
 		static float valuelist;
-		float value;
-		void setvalue(float a);
+		float value;//placeholderµÄÖµ 
+		void setvalue(float a);//¸³Öµ 
 		float geteval();
-		Placeholder();
 };
 
 class Constant:public ZeroParentNode
