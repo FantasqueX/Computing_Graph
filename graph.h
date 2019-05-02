@@ -12,8 +12,7 @@ extern bool asserted;
 class Graph
 {
 	std::map<std::string,Node*> nodes;
-	std::map<std::string,Node*> nodesamename[50];
-	std::map<int,float> outvalue;
+	std::map<int,float> outvalue;//计算结果历史纪录
 	int size,cnt;
 	// void pushNode(std::string str,Node* newnode);
 	public:

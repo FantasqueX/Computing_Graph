@@ -36,10 +36,10 @@ float ZeroParentNode::geteval()
     return 1;
 }
 
-int ZeroParentNode::getParentsNum()
-{
-    return 0;
-}
+// int ZeroParentNode::getParentsNum()
+// {
+//     return 0;
+// }
 
 float OneParentNode::geteval()
 {
@@ -52,10 +52,10 @@ float OneParentNode::geteval()
     }
 }
 
-int OneParentNode::getParentsNum()
-{
-    return 1;
-}
+// int OneParentNode::getParentsNum()
+// {
+//     return 1;
+// }
 
 // float OneParentNode::func(float x){}
 
@@ -79,10 +79,10 @@ float TwoParentsNode::geteval()
     }
 }
 
-int TwoParentsNode::getParentsNum()
-{
-    return 2;
-}
+// int TwoParentsNode::getParentsNum()
+// {
+//     return 2;
+// }
 
 TwoParentsNode::TwoParentsNode(Node* parent1,Node* parent2)
 {
@@ -103,10 +103,10 @@ float ThreeParentsNode::geteval()
     }
 }
 
-int ThreeParentsNode::getParentsNum()
-{
-    return 3;
-}
+// int ThreeParentsNode::getParentsNum()
+// {
+//     return 3;
+// }
 
 ThreeParentsNode::ThreeParentsNode(Node* parent1,Node* parent2,Node* parent3)
 {

@@ -21,7 +21,7 @@ class Constant:public ZeroParentNode
 		float value;
 	public:
 		float geteval();
-		virtual void reset();
+		void reset();
 		Constant(float b);
 };
 
@@ -31,6 +31,6 @@ class Variable:public ZeroParentNode
 		float value;
 		void setvalue(float a);
 		float geteval();
-		virtual void reset();
+		void reset();
 		Variable(float b);
 };

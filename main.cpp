@@ -65,11 +65,7 @@ int main()
 		else if(p1=="SIN")
 		{
 			cin>>p2;
-<<<<<<< HEAD
 			gra.pushNode(name,new Sin(gra[p2]));
-=======
-			gra.push(name,new Opn<sin>(gra[p2]));
->>>>>>> 895d1d48c25cb7d0887bd6021983ed67e7d726dc
 			continue;
 		}
 		else if(p1=="EXP")

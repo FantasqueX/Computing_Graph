@@ -13,14 +13,14 @@ class Node
 		virtual void setvalue(float a);
 		// float tempeval;
 		// bool calculated = 0;
-		virtual void reset();
+		virtual void reset() ;
 };
 
 class ZeroParentNode:public Node
 {
 	public:
 		float geteval();
-		int getParentsNum();
+		// int getParentsNum();
 };
 
 class OneParentNode:public Node
@@ -30,7 +30,8 @@ class OneParentNode:public Node
 		OneParentNode(Node* parent);
 		virtual float func(float x) = 0;	
 		float geteval();
-		int getParentsNum();
+		void reset();
+		// int getParentsNum();
 };
 
 class TwoParentsNode:public Node
@@ -39,7 +40,8 @@ class TwoParentsNode:public Node
 		Node *p1,*p2;//parents
 		virtual float func(float x,float y) = 0;	
 		float geteval();
-		int getParentsNum();
+		// int getParentsNum();
+		void reset();
 		TwoParentsNode(Node* parent1,Node* parent2);
 };
 
@@ -49,6 +51,7 @@ class ThreeParentsNode:public Node
 		Node *p1,*p2,*p3;//parents
 		virtual float func(float x,float y,float z) = 0;		
 		float geteval();
-		int getParentsNum();
+		// int getParentsNum();
+		void reset();
 		ThreeParentsNode(Node* parent1,Node* parent2,Node* parent3);
 };

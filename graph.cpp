@@ -3,11 +3,7 @@
 #include <vector>
 #include <string>
 #include <map>
-<<<<<<< HEAD
-
-=======
 bool asserted=0;//ĳһ�������Ƿ��Ѿ�����error�������ظ����
->>>>>>> 895d1d48c25cb7d0887bd6021983ed67e7d726dc
 Graph::Graph()
 {
     cnt = 0;

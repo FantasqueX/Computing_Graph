@@ -14,15 +14,6 @@ float multiply::func(float x,float y)
 }
 float division::func(float x,float y)
 {
-<<<<<<< HEAD
-    if(y==0)
-    {
-        std::cout<<"ERROR: Division by zero" << std::endl;
-        return NAN;
-    }
-    else
-        return x/y;
-=======
 	if(y==0)
 	{
 		if(!asserted)
@@ -34,7 +25,6 @@ float division::func(float x,float y)
 	}
 	else
 		return x/y;
->>>>>>> 895d1d48c25cb7d0887bd6021983ed67e7d726dc
 }
 float EQU::func(float x,float y)
 {
