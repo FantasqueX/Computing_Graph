@@ -2,6 +2,7 @@
 #include <string>
 #include <cassert>
 #include <iomanip>
+#include <sstream>
 // #include <vector>
 #include <map>
 #include "node.h"
@@ -64,7 +65,7 @@ int main()
 		else if(p1=="SIN")
 		{
 			cin>>p2;
-			gra.push(name,new Sin(gra[p2]));
+			gra.push(name,new Opn<sin>(gra[p2]));
 			continue;
 		}
 		else if(p1=="EXP")
@@ -136,40 +137,56 @@ int main()
 	}
 
 	cin>>q;
+//	int t=0;
 	for(int i=0; i<q; i++)
 	{
-		cin>>type;
+		string command;
+		getline(cin,command);
+		if(command.empty())
+		{
+			i--;
+			continue;
+		}
+		stringstream ss(command);
+		ss>>type;
 		if(type=="EVAL")
 		{
-			cin>>name;
-			int phcount;
-			cin>>phcount;
 			placeHolderMap.clear();
+			ss>>name;
+			string phcountstr;
+			ss>>phcountstr;
+			int phcount=0;
+			if(!phcountstr.empty())
+			{
+				phcount=stoi(phcountstr);
+			}
+
+			//		cout<<phcountstr<<endl;
 			for(int j=0; j<phcount; j++)
 			{
 				string x;
 				float y;
-				cin>>x>>y;
+				ss>>x>>y;
 				placeHolderMap.insert(make_pair(x,y));
 			}
+
 			float ov = gra.eval(name,placeHolderMap);
 			if(!isnan(ov))
 				cout << fixed << setprecision(4) <<ov<<endl;
 		}
 		else if(type=="SETCONSTANT")
 		{
-			cin>>name;
-			cin>>value;
+			ss>>name;
+			ss>>value;
 			gra.setvariable(name,value);
 		}
 		else if(type=="SETANSWER")
 		{
-			cin>>name;
+			ss>>name;
 			int t;
-			cin>>t;
+			ss>>t;
 			gra.setvariable(name,gra.lookupanswer(t));
 		}
 		else assert(0);
-		
 	}
 }
