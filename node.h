@@ -52,3 +52,24 @@ class ThreeParentsNode:public Node
 		int getParentsNum();
 		ThreeParentsNode(Node* parent1,Node* parent2,Node* parent3);
 };
+
+template<float f(float x,)>
+class Opn:public OneParentNode
+{
+	using OneParentNode::OneParentNode;
+	float func(float x){return f(x);}
+};
+
+template<float f(float x)>
+class Opn:public OneParentNode
+{
+	using OneParentNode::OneParentNode;
+	float func(float x){return f(x);}
+};
+
+template<float f(float x,float y)>
+class Tpn:public TwoParentNode
+{
+	using TwoParentNode::TwoParentNode;
+	float func(float x,float y){return f(x,y);}
+};
