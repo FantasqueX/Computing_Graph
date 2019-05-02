@@ -2,39 +2,31 @@
 #include <iostream>
 #include <string>
 #include <cmath>
-const float NaN=0.0/0.0;
-class Node //抽象类Node
+class Node
 {
-	protected:
-	string TypName;//记录类型
 	public:
-		std::string name;
-		virtual float geteval() = 0;
+		virtual float geteval();
 		virtual void setvalue(float a);
-		virtual int getParentsNum() = 0; 
 		float tempeval;
-		bool calculated=0;//记录是否在一次计算中是否已经计算过
-		bool printable=0;//?
-		virtual void reset() = 0;
+		bool calculated=0;
+		virtual void reset();
 };
-
-class ZeroParentNode:public Node //
+class ZeroParentsNode:public Node
 {
 	public:
 		float geteval();
 		int getParentsNum();
 };
 
-class OneParentNode:public Node
+class OneParentsNode:public Node
 {
 	public:
 		Node *p1;//parents
-		OneParentNode(std::string a,Node* parent1);
+		OneParentsNode(Node* parent);
 		virtual float func(float x);	
 		float geteval();
 		int getParentsNum();
 };
-
 class TwoParentsNode:public Node
 {
 	public:
@@ -42,9 +34,8 @@ class TwoParentsNode:public Node
 		virtual float func(float x,float y);	
 		float geteval();
 		int getParentsNum();
-		TwoParentsNode(std::string a,Node* parent1,Node* parent2);
+		TwoParentsNode(Node* parent1,Node* parent2);
 };
-
 class ThreeParentsNode:public Node
 {
 	public:
@@ -52,5 +43,5 @@ class ThreeParentsNode:public Node
 		virtual float func(float x,float y,float z);		
 		float geteval();
 		int getParentsNum();
-		ThreeParentsNode(std::string a,Node* parent1,Node* parent2,Node* parent3);
+		ThreeParentsNode(Node* parent1,Node* parent2,Node* parent3);
 };

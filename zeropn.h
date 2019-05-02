@@ -4,29 +4,29 @@
 #include <cmath>
 #include "node.h"
 using namespace std;
-class Placeholder:public ZeroParentNode
+class Placeholder:public ZeroParentsNode
 {
 	public:
 		static float valuelist;
-		float value;//应该统一进tempvalue？
+		float value;
 		void setvalue(float a);
 		float geteval();
-		Placeholder(string a);
+		Placeholder();
 };
-class Constant:public ZeroParentNode
+class Constant:public ZeroParentsNode
 {
 		float value;
 	public:
 		float geteval();
 		virtual void reset();
-		Constant(string a,float b);
+		Constant(float b);
 };
-class Variable:public ZeroParentNode
+class Variable:public ZeroParentsNode
 {
 	public:
 		float value;
 		void setvalue(float a);
 		float geteval();
 		virtual void reset();
-		Variable(std::string a,float b);
+		Variable(float b);
 };

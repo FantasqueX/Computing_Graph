@@ -1,57 +1,48 @@
 #include "graph.h"
 #include<iostream>
+#include <vector>
 #include <string>
-
-
-Graph::Graph(int sz)//确定节点数的构造函数
+#include <map>
+Graph::Graph()
 {
-    size=sz;
+    cnt = 0;
 }
-
-Graph::~Graph()
+Node* Graph::operator[](const std::string str)
 {
-    delete[] nodes;
+    auto it = nodes.find(str);
+    if (it==nodes.end())
+        return nullptr;
+    return it->second;
 }
-
-
-Node* Graph::operator[](const string str)
+void Graph::push(std::string str,Node* newnode)
 {
-    return getNamePointer(str);
-}
-
-int Graph::push(Node* newnode)
-{
-    if(getid(newnode->name)!=-1)
+    if(nodes[str]!=nullptr)
     {
         std::cout<<"Same name!"<<std::endl;
+        return ;
     }
-    if(used==maxsize)
-    {
-        std::cout<<"Max size!"<<std::endl;
-        return 1;
-    }
-    nodes[used]=newnode;
-    used++;
-    return 0;
+    nodes[str] = newnode;
 }
-
 void Graph::reset()
 {
-    for(int i=0; i<used; i++)
-    {
-        nodes[i]->reset();//����variable��constant 
-    }
+    for(auto it=nodes.begin(); it != nodes.end(); it++)
+        it->second->reset();
 }
-
-float Graph::eval(string nodename,int placeholdernum,string* placeholdernames,float* placeholdervalue)
+float Graph::eval(string nodename,int placeholdernum,std::vector<string> placeholdernames,std::vector<float> placeholdervalue)
 {
+    ++cnt;
     reset();
     for(int i=0;i<placeholdernum;i++)
-        getNamePointer(placeholdernames[i])->setvalue(placeholdervalue[i]);
-        
-    return getNamePointer(nodename)->geteval();
+        nodes[placeholdernames[i]]->setvalue(placeholdervalue[i]);
+    outvalue[cnt] = nodes[nodename]->geteval();
+    return nodes[nodename]->geteval();
 }
 void Graph::setvariable(string vname,float value)
 {
-    getNamePointer(vname)->setvalue(value);
+    ++cnt;
+    nodes[vname]->setvalue(value);
+}
+float Graph::lookupanswer(int t)
+{
+    return outvalue[t];
 }
