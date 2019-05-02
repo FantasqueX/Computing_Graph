@@ -6,7 +6,7 @@ Print::Print(std::string str,Node* parent): OneParentNode(parent)
 }
 float Print::func(float x)
 {
-    std::cout<<"Print Operator: "<<nm<<"="<<x<<std::endl;
+    std::cout<<"PRINT Operator: "<<nm<<"="<<x<<std::endl;
     return x;
 }
 float Sin::func(float x)
@@ -20,7 +20,7 @@ float Exp::func(float x)
 float Log::func(float x)
 {
     if(x<=0)
-        std::cout<<"LOG operator's input must be positive"<<std::endl;
+        std::cout<<"ERROR:LOG operator's input must be positive"<<std::endl;
     return log(x);
 }
 float Tanh::func(float x)

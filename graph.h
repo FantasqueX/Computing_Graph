@@ -19,7 +19,7 @@ class Graph
 		Node* operator[] (const string str);//获取节点
 		void push(std::string str,Node* newnode);
 		void reset();
-		float eval(string nodename,int placeholdernum,std::vector<string> placeholdernames,std::vector<float> placeholdervalue);
+		float eval(string nodename, const map<string,float> &phMap);
 		void setvariable(string vname,float value);
 		float lookupanswer(int t);
 };

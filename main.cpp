@@ -1,15 +1,16 @@
 #include <iostream>
 #include <string>
 #include <cassert>
-#include <cmath>
 #include <iomanip>
-#include <vector>
+// #include <vector>
+#include <map>
 #include "node.h"
 #include "graph.h"
 #include <iostream>
+
 using namespace std;
-vector <float> phvalues;
-vector <string> phnames;
+
+map <string,float> placeHolderMap;
 int main()
 {
 	Graph gra;
@@ -143,19 +144,17 @@ int main()
 			cin>>name;
 			int phcount;
 			cin>>phcount;
-			phnames.clear();
-			phvalues.clear();
+			placeHolderMap.clear();
 			for(int j=0; j<phcount; j++)
 			{
 				string x;
 				float y;
 				cin>>x>>y;
-				phnames.push_back(x);
-				phvalues.push_back(y);
+				placeHolderMap.insert(make_pair(x,y));
 			}
-			float ov = gra.eval(name,phcount,phnames,phvalues);
+			float ov = gra.eval(name,placeHolderMap);
 			if(!isnan(ov))
-				cout<<fixed<<setprecision(4)<<ov<<endl;
+				cout << fixed << setprecision(4) <<ov<<endl;
 		}
 		else if(type=="SETCONSTANT")
 		{

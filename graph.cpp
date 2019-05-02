@@ -32,12 +32,12 @@ void Graph::reset()
         it->second->reset();
 }
 
-float Graph::eval(string nodename,int placeholdernum,std::vector<string> placeholdernames,std::vector<float> placeholdervalue)
+float Graph::eval(string nodename, const map<string,float> &phMap)
 {
     ++cnt;
     reset();
-    for(int i=0;i<placeholdernum;i++)
-        nodes[placeholdernames[i]]->setvalue(placeholdervalue[i]);
+    for(auto iter=phMap.begin(); iter != phMap.end(); iter++)
+        nodes[iter->first]->setvalue(iter->second);
     outvalue[cnt] = nodes[nodename]->geteval();
     return nodes[nodename]->geteval();
 }
