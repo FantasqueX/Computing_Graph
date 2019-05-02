@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <map>
+bool asserted=0;//某一次运算是否已经给出error，避免重复输出
 Graph::Graph()
 {
     cnt = 0;
@@ -30,6 +31,7 @@ void Graph::reset(string nodename)
 {
   //  for(auto it=nodes.begin(); it != nodes.end(); it++)
     //    it->second->reset();
+    asserted=0;
     nodes[nodename]->reset();
     
 }

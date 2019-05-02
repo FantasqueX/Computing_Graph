@@ -5,6 +5,7 @@
 #include "node.h"
 using namespace std;
 
+extern bool asserted;
 class Placeholder:public ZeroParentNode
 {
 	public:

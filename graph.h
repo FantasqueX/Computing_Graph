@@ -8,7 +8,7 @@
 #include "onepn.h"
 #include "twopn.h"
 #include "threepn.h"
-
+extern bool asserted;
 class Graph
 {
 	std::map<std::string,Node*> nodes;
@@ -17,6 +17,7 @@ class Graph
 	int size,cnt;
 	public:
 		Graph();
+		
 		Node* operator[] (const string str);//获取节点
 		void push(std::string str,Node* newnode);
 		void reset(string nodename);
