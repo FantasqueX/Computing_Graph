@@ -1,12 +1,14 @@
 #pragma once
 #include<cmath>
 #include<iostream>
+#include<vector>
 
 class Node
 {
 	protected:
 		float tempeval;//临时计算数值(避免重复计算)
 		bool calculated = 0;//是否已计算 (避免重复计算)
+		std::vector<Node*>parents;
 	public:
 		virtual float geteval() = 0;//获取节点数值
 		virtual void setvalue(float a);//对variable赋值 
@@ -22,29 +24,23 @@ class ZeroParentNode:public Node//没有父节点的节点,constant,variable,pla
 class OneParentNode:public Node//1个父节点的节点,print和单变量函数
 {
 	public:
-		Node *p1;//parents
-		OneParentNode(Node* parent);
+		OneParentNode(Node* p1);
 		virtual float func() = 0;//这个节点对应的函数 	
 		float geteval();
-		void reset();
 };
 
 class TwoParentsNode:public Node//2个父节点的节点,四则运算与比较
 {
 	public:
-		Node *p1,*p2;//parents
 		virtual float func() = 0;	
 		float geteval();
-		void reset();
-		TwoParentsNode(Node* parent1,Node* parent2);
+		TwoParentsNode(Node* p1,Node* p2);
 };
 
 class ThreeParentsNode:public Node//3个父节点的节点,只有cond
 {
 	public:
-		Node *p1,*p2,*p3;//parents
 		virtual float func() = 0;		
 		float geteval();
-		void reset();
-		ThreeParentsNode(Node* parent1,Node* parent2,Node* parent3);
+		ThreeParentsNode(Node* p1,Node* p2,Node* p3);
 };

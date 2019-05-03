@@ -19,19 +19,14 @@ float Placeholder::geteval()
 		return NAN;
 	}
 }
-
-Placeholder::Placeholder()
-{
-}
+Placeholder::Placeholder() {}
 
 float Constant::geteval()
 {
 	return value;
 }
 
-void Constant::reset()
-{
-}
+void Constant::reset() {}
 
 Constant::Constant(float b)
 {
