@@ -1,9 +1,5 @@
 #pragma once
-#include <iostream>
-#include <string>
-#include <cmath>
 #include "node.h"
-using namespace std;
 
 extern bool asserted;
 class Placeholder:public ZeroParentNode

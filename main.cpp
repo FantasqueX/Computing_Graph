@@ -7,7 +7,6 @@
 #include <map>
 #include "node.h"
 #include "graph.h"
-#include <iostream>
 
 using namespace std;
 
@@ -54,43 +53,36 @@ int main()
 			cin>>p3;
 			cin>>p4;
 			gra.pushNode(name,new Cond(gra[p2],gra[p3],gra[p4]));
-			continue;
 		}
 		else if(p1=="PRINT")
 		{
 			cin>>p2;
 			gra.pushNode(name,new Print(p2,gra[p2]));
-			continue;
 		}
 		else if(p1=="SIN")
 		{
 			cin>>p2;
 			gra.pushNode(name,new Sin(gra[p2]));
-			continue;
 		}
 		else if(p1=="EXP")
 		{
 			cin>>p2;
 			gra.pushNode(name,new Exp(gra[p2]));
-			continue;
 		}
 		else if(p1=="LOG")
 		{
 			cin>>p2;
 			gra.pushNode(name,new Log(gra[p2]));
-			continue;
 		}
 		else if(p1=="TANH")
 		{
 			cin>>p2;
 			gra.pushNode(name,new Tanh(gra[p2]));
-			continue;
 		}
 		else if(p1=="SIGMOID")
 		{
 			cin>>p2;
 			gra.pushNode(name,new Sigmoid(gra[p2]));
-			continue;
 		}
 		else
 		{
@@ -98,19 +90,19 @@ int main()
 			cin>>p2;
 			if(type=="+")
 			{
-				gra.pushNode(name,new sum(gra[p1],gra[p2]));
+				gra.pushNode(name,new Sum(gra[p1],gra[p2]));
 			}
 			else if(type=="-")
 			{
-				gra.pushNode(name,new subtraction(gra[p1],gra[p2]));
+				gra.pushNode(name,new Subtraction(gra[p1],gra[p2]));
 			}
 			else if(type=="*")
 			{
-				gra.pushNode(name,new multiply(gra[p1],gra[p2]));
+				gra.pushNode(name,new Multiply(gra[p1],gra[p2]));
 			}
 			else if(type=="/")
 			{
-				gra.pushNode(name,new division(gra[p1],gra[p2]));
+				gra.pushNode(name,new Division(gra[p1],gra[p2]));
 			}
 			else if(type==">")
 			{
@@ -137,7 +129,6 @@ int main()
 	}
 
 	cin>>q;
-//	int t=0;
 	for(int i=0; i<q; i++)
 	{
 		string command;
@@ -161,7 +152,6 @@ int main()
 				phcount=stoi(phcountstr);
 			}
 
-			//		cout<<phcountstr<<endl;
 			for(int j=0; j<phcount; j++)
 			{
 				string x;

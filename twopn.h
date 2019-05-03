@@ -1,60 +1,58 @@
 #pragma once
-#include <iostream>
-#include <string>
-#include <math.h>
 #include "node.h"
 extern bool asserted;
-class sum:public TwoParentsNode
+
+class Sum:public TwoParentsNode
 {
 	public:
 		using TwoParentsNode::TwoParentsNode;
-		float func(float x,float y);
+		float func();
 };
-class subtraction:public TwoParentsNode
+class Subtraction:public TwoParentsNode
 {
 	public:
 		using TwoParentsNode::TwoParentsNode;
-		float func(float x,float y);
+		float func();
 };
-class multiply:public TwoParentsNode
+class Multiply:public TwoParentsNode
 {
 	public:
 		using TwoParentsNode::TwoParentsNode;
-		float func(float x,float y);
+		float func();
 };
-class division:public TwoParentsNode
+class Division:public TwoParentsNode
 {
 	public:
 		using TwoParentsNode::TwoParentsNode;
-		float func(float x,float y);
+		float func();
 };
 class EQU:public TwoParentsNode
 {
 	public:
 		using TwoParentsNode::TwoParentsNode;
-		float func(float x,float y);
+		float func();
 };
 class GTR:public TwoParentsNode
 {
 	public:
 		using TwoParentsNode::TwoParentsNode;
-		float func(float x,float y);
+		float func();
 };
 class GEQ:public TwoParentsNode
 {
 	public:
 		using TwoParentsNode::TwoParentsNode;
-		float func(float x,float y);
+		float func();
 };
 class LSS:public TwoParentsNode
 {
 	public:
 		using TwoParentsNode::TwoParentsNode;
-		float func(float x,float y);
+		float func();
 };
 class LEQ:public TwoParentsNode
 {
 	public:
 		using TwoParentsNode::TwoParentsNode;	
-		float func(float x,float y);
+		float func();
 };
