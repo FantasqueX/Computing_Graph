@@ -5,5 +5,5 @@ class Cond:public ThreeParentsNode
 {
 	public:
 		using ThreeParentsNode::ThreeParentsNode;
-		float func();
+		float func() override;
 };

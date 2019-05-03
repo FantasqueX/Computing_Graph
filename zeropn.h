@@ -5,28 +5,24 @@ extern bool asserted;
 class Placeholder:public ZeroParentNode
 {
 	public:
-		static float valuelist;
-		float value;
 		void setvalue(float a);
-		float geteval();
+		float geteval() override;
 		Placeholder();
 };
 
 class Constant:public ZeroParentNode
 {
-		float value;
 	public:
-		float geteval();
-		void reset();
+		float geteval() override;
+		void reset() override;
 		Constant(float b);
 };
 
 class Variable:public ZeroParentNode
 {
 	public:
-		float value;
 		void setvalue(float a);
-		float geteval();
-		void reset();
+		float geteval() override;
+		void reset() override;
 		Variable(float b);
 };

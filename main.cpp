@@ -168,14 +168,14 @@ int main()
 		{
 			ss>>name;
 			ss>>value;
-			gra.setvariable(name,value);
+			gra.setVariable(name,value);
 		}
 		else if(type=="SETANSWER")
 		{
 			ss>>name;
 			int t;
 			ss>>t;
-			gra.setvariable(name,gra.lookupanswer(t));
+			gra.setAnswer(name,t);
 		}
 		else assert(0);
 	}

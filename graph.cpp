@@ -40,7 +40,7 @@ float Graph::eval(std::string nodename, const std::map<std::string,float> &phMap
     return outvalue[cnt];
 }
 
-void Graph::setvariable(std::string vname,float value)
+void Graph::setVariable(std::string vname,float value)
 {
     ++cnt;
     nodes[vname]->setvalue(value);
@@ -49,4 +49,9 @@ void Graph::setvariable(std::string vname,float value)
 float Graph::lookupanswer(int t)
 {
     return outvalue[t];
+}
+
+void Graph::setAnswer(string vname,int t)
+{
+    setVariable(vname,lookupanswer(t));
 }

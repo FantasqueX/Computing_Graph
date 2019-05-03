@@ -11,12 +11,8 @@ void Node::reset()
     calculated=0;
 }
 
-float ZeroParentNode::geteval()
-{
-    return NAN;
-}
 
-float OneParentNode::geteval()
+float Node::geteval()
 {
     if(calculated)
         return tempeval;//如果已计算就直接返回计算数值
@@ -24,18 +20,19 @@ float OneParentNode::geteval()
     return tempeval=func();
 }
 
+
+
+float ZeroParentNode::func()
+{
+    return NAN;
+}
+
+
 OneParentNode::OneParentNode(Node* p1)
 {
     parents.push_back(p1);
 }
 
-float TwoParentsNode::geteval()
-{
-    if(calculated)
-        return tempeval;
-    calculated=1;
-    return tempeval=func();
-}
 
 TwoParentsNode::TwoParentsNode(Node* p1,Node* p2)
 {
@@ -43,13 +40,6 @@ TwoParentsNode::TwoParentsNode(Node* p1,Node* p2)
     parents.push_back(p2);
 }
 
-float ThreeParentsNode::geteval()
-{
-    if(calculated)
-        return tempeval;
-    calculated=1;
-    return tempeval=func();
-}
 
 
 ThreeParentsNode::ThreeParentsNode(Node* p1,Node* p2,Node* p3)
