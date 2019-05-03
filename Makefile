@@ -2,19 +2,19 @@ all:main
 
 main:main.o node.o onepn.o twopn.o threepn.o zeropn.o graph.o
 	$(CXX) main.o node.o onepn.o twopn.o threepn.o zeropn.o graph.o -o main
-node.o: node.cpp node.h 
-	$(CXX) -c node.cpp -o node.o
-onepn.o: onepn.cpp node.h onepn.h 
-	$(CXX) -c onepn.cpp -o onepn.o
-twopn.o: twopn.cpp node.h twopn.h 
-	$(CXX) -c twopn.cpp -o twopn.o
-threepn.o: threepn.cpp node.h threepn.h 
-	$(CXX) -c threepn.cpp -o threepn.o
-zeropn.o: zeropn.cpp node.h zeropn.h 
-	$(CXX) -c zeropn.cpp -o zeropn.o
-graph.o: graph.cpp graph.h  node.h onepn.h twopn.h threepn.h zeropn.h
-	$(CXX) -c graph.cpp -o graph.o
-main.o: main.cpp node.h graph.h node.o onepn.o twopn.o threepn.o zeropn.o graph.o
+node.o: graph/node.cpp graph/node.h 
+	$(CXX) -c graph/node.cpp -o node.o
+onepn.o: graph/onepn.cpp graph/node.h graph/onepn.h 
+	$(CXX) -c graph/onepn.cpp -o onepn.o
+twopn.o: graph/twopn.cpp graph/node.h graph/twopn.h 
+	$(CXX) -c graph/twopn.cpp -o twopn.o
+threepn.o: graph/threepn.cpp graph/node.h graph/threepn.h 
+	$(CXX) -c graph/threepn.cpp -o threepn.o
+zeropn.o: graph/zeropn.cpp graph/node.h graph/zeropn.h 
+	$(CXX) -c graph/zeropn.cpp -o zeropn.o
+graph.o: graph/graph.cpp graph/graph.h  graph/node.h graph/onepn.h graph/twopn.h graph/threepn.h graph/zeropn.h
+	$(CXX) -c graph/graph.cpp -o graph.o
+main.o: main.cpp graph/node.h graph/graph.h node.o onepn.o twopn.o threepn.o zeropn.o graph.o
 	$(CXX) -c main.cpp -o main.o
 clean:
 	rm *.o 

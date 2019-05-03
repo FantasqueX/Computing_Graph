@@ -3,10 +3,10 @@
 #include <cassert>
 #include <iomanip>
 #include <sstream>
-// #include <vector>
+
 #include <map>
-#include "node.h"
-#include "graph.h"
+#include "graph/node.h"
+#include "graph/graph.h"
 
 using namespace std;
 
