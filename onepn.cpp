@@ -4,21 +4,25 @@ Print::Print(std::string str,Node* parent): OneParentNode(parent)
 {
 	nm = str;
 }
-float Print::func(float x)
+float Print::func()
 {
+	float x = p1->geteval();
 	std::cout<<"PRINT operator: "<<nm<<" = "<<x<<std::endl;
 	return x;
 }
-float Sin::func(float x)
+float Sin::func()
 {
+	float x = p1->geteval();
 	return sin(x);
 }
-float Exp::func(float x)
+float Exp::func()
 {
+	float x = p1->geteval();
 	return exp(x);
 }
-float Log::func(float x)
+float Log::func()
 {
+	float x = p1->geteval();
 	if(x<=0)
 	{
 		if(!asserted)
@@ -30,11 +34,13 @@ float Log::func(float x)
 	}
 	return log(x);
 }
-float Tanh::func(float x)
+float Tanh::func()
 {
+	float x = p1->geteval();
 	return tanh(x);
 }
-float Sigmoid::func(float x)
+float Sigmoid::func()
 {
+	float x = p1->geteval();
 	return (tanh(x/2)+1)/2;
 }

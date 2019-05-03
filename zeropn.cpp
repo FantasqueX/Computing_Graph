@@ -1,6 +1,5 @@
-#include <iostream>
-#include <string>
 #include "zeropn.h"
+
 void Placeholder::setvalue(float a)
 {
 	value=a;

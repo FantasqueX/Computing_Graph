@@ -1,10 +1,10 @@
 #include "threepn.h"
-#include<string>
-float Cond::func(float x,float y,float z)
+
+float Cond::func()
 {
-	if(isnan(x)||isnan(y)||isnan(z))return NAN;
+    float x = p1->geteval(),y = p2->geteval(), z = p3->geteval();
+	if(std::isnan(x)||std::isnan(y)||std::isnan(z))return NAN;
     if(x>0)
         return y;
-    else
-        return z;
+    return z;
 }
