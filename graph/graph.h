@@ -1,12 +1,12 @@
 #pragma once
 #include <string>
-#include <vector>
 #include <map>
 #include "node.h"
-#include "zeropn.h"
-#include "onepn.h"
-#include "twopn.h"
-#include "threepn.h"
+#include "Operand.h"
+#include "UnaryOperation.h"
+#include "BinaryOperation.h"
+#include "TernaryOperation.h"
+
 extern bool asserted;
 using std::string;
 class Graph
