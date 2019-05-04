@@ -11,9 +11,9 @@ class Node
 		float tempderivative;//临时计算导数值
 		bool calculated = 0;//是否已计算 (避免重复计算)
 		bool calculatedderivative = 0;//是否已计算
+		std::string name;
 		std::vector<Node*> parents;
 	public:
-		std::string name;
 		std::vector<Node*> sons;
 		virtual float geteval();//获取节点数值
 		virtual void setvalue(float a);//对variable赋值 
