@@ -2,7 +2,7 @@
 #include "node.h"
 
 extern bool asserted;
-class Placeholder:public ZeroParentNode
+class Placeholder:public Operand
 {
 	public:
 		void setvalue(float a);
@@ -10,7 +10,7 @@ class Placeholder:public ZeroParentNode
 		Placeholder();
 };
 
-class Constant:public ZeroParentNode
+class Constant:public Operand
 {
 	public:
 		float geteval() override;
@@ -18,7 +18,7 @@ class Constant:public ZeroParentNode
 		Constant(float b);
 };
 
-class Variable:public ZeroParentNode
+class Variable:public Operand
 {
 	public:
 		void setvalue(float a);

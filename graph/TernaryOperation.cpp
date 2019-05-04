@@ -1,4 +1,4 @@
-#include "threepn.h"
+#include "TernaryOperation.h"
 
 float Cond::func()
 {

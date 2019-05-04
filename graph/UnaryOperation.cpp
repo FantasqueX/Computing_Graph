@@ -1,6 +1,6 @@
-#include "onepn.h"
+#include "UnaryOperation.h"
 #include <string>
-Print::Print(std::string str,Node* parent): OneParentNode(parent)
+Print::Print(std::string str,Node* parent): UnaryOperation(parent)
 {
 	nm = str;
 }

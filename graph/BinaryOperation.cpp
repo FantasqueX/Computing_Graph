@@ -1,4 +1,4 @@
-#include "twopn.h"
+#include "BinaryOperation.h"
 
 float Sum::func()
 {

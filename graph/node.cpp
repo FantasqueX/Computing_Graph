@@ -11,7 +11,6 @@ void Node::reset()
     calculated=0;
 }
 
-
 float Node::geteval()
 {
     if(calculated)
@@ -20,21 +19,18 @@ float Node::geteval()
     return tempeval=func();
 }
 
-
-
-float ZeroParentNode::func()
+float Operand::func()
 {
     return NAN;
 }
 
-
-OneParentNode::OneParentNode(Node* p1)
+UnaryOperation::UnaryOperation(Node* p1)
 {
     parents.push_back(p1);
 }
 
 
-TwoParentsNode::TwoParentsNode(Node* p1,Node* p2)
+BinaryOperation::BinaryOperation(Node* p1,Node* p2)
 {
     parents.push_back(p1);
     parents.push_back(p2);
@@ -42,7 +38,7 @@ TwoParentsNode::TwoParentsNode(Node* p1,Node* p2)
 
 
 
-ThreeParentsNode::ThreeParentsNode(Node* p1,Node* p2,Node* p3)
+TernaryOperation::TernaryOperation(Node* p1,Node* p2,Node* p3)
 {
     parents.push_back(p1);
     parents.push_back(p2);
