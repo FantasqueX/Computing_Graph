@@ -8,9 +8,9 @@ class Node
 {
 	protected:
 		float tempeval;//临时计算数值(避免重复计算)
-		float tempderivative;
+		float tempderivative;//临时计算导数值
 		bool calculated = 0;//是否已计算 (避免重复计算)
-		bool calculatedderivative = 0;
+		bool calculatedderivative = 0;//是否已计算
 		std::vector<Node*> parents;
 	public:
 		std::string name;
