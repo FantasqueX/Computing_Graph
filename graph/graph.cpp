@@ -40,6 +40,12 @@ float Graph::eval(std::string nodename, const std::map<std::string,float> &phMap
     return outvalue[cnt];
 }
 
+float Graph::getderivative(std::string name1,std::string name2, std::map<std::string ,float>phMap)
+{
+    eval(name1,phMap);
+    return nodes[name2]->getderivative(nodes[name1]);
+}
+
 void Graph::setVariable(std::string vname,float value)
 {
     ++cnt;

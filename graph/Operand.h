@@ -5,9 +5,10 @@ extern bool asserted;
 class Placeholder:public Operand
 {
 	public:
+		std::string name;
 		void setvalue(float a);
 		float geteval() override;
-		Placeholder();
+		Placeholder(std::string);
 };
 
 class Constant:public Operand
@@ -15,7 +16,7 @@ class Constant:public Operand
 	public:
 		float geteval() override;
 		void reset() override;
-		Constant(float b);
+		Constant(std::string,float b);
 };
 
 class Variable:public Operand
@@ -24,5 +25,5 @@ class Variable:public Operand
 		void setvalue(float a);
 		float geteval() override;
 		void reset() override;
-		Variable(float b);
+		Variable(std::string,float b);
 };

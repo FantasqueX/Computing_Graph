@@ -1,5 +1,3 @@
-#include <iostream>
-#include <string>
 #include <cassert>
 #include <iomanip>
 #include <sstream>
@@ -25,16 +23,16 @@ int main()
 		if(type=="C")
 		{
 			cin>>value;
-			gra.pushNode(name,new Constant(value));
+			gra.pushNode(name,new Constant(name,value));
 		}
 		else if(type=="V")
 		{
 			cin>>value;
-			gra.pushNode(name,new Variable(value));
+			gra.pushNode(name,new Variable(name,value));
 		}
 		else if(type=="P")
 		{
-			gra.pushNode(name,new Placeholder);
+			gra.pushNode(name,new Placeholder(name));
 		}
 		else assert(0);
 	}
@@ -52,37 +50,37 @@ int main()
 			cin>>p2;
 			cin>>p3;
 			cin>>p4;
-			gra.pushNode(name,new Cond(gra[p2],gra[p3],gra[p4]));
+			gra.pushNode(name,new Cond(name,gra[p2],gra[p3],gra[p4]));
 		}
 		else if(p1=="PRINT")
 		{
 			cin>>p2;
-			gra.pushNode(name,new Print(p2,gra[p2]));
+			gra.pushNode(name,new Print(name,p2,gra[p2]));
 		}
 		else if(p1=="SIN")
 		{
 			cin>>p2;
-			gra.pushNode(name,new Sin(gra[p2]));
+			gra.pushNode(name,new Sin(name,gra[p2]));
 		}
 		else if(p1=="EXP")
 		{
 			cin>>p2;
-			gra.pushNode(name,new Exp(gra[p2]));
+			gra.pushNode(name,new Exp(name,gra[p2]));
 		}
 		else if(p1=="LOG")
 		{
 			cin>>p2;
-			gra.pushNode(name,new Log(gra[p2]));
+			gra.pushNode(name,new Log(name,gra[p2]));
 		}
 		else if(p1=="TANH")
 		{
 			cin>>p2;
-			gra.pushNode(name,new Tanh(gra[p2]));
+			gra.pushNode(name,new Tanh(name,gra[p2]));
 		}
 		else if(p1=="SIGMOID")
 		{
 			cin>>p2;
-			gra.pushNode(name,new Sigmoid(gra[p2]));
+			gra.pushNode(name,new Sigmoid(name,gra[p2]));
 		}
 		else
 		{
@@ -90,39 +88,39 @@ int main()
 			cin>>p2;
 			if(type=="+")
 			{
-				gra.pushNode(name,new Sum(gra[p1],gra[p2]));
+				gra.pushNode(name,new Sum(name,gra[p1],gra[p2]));
 			}
 			else if(type=="-")
 			{
-				gra.pushNode(name,new Subtraction(gra[p1],gra[p2]));
+				gra.pushNode(name,new Subtraction(name,gra[p1],gra[p2]));
 			}
 			else if(type=="*")
 			{
-				gra.pushNode(name,new Multiply(gra[p1],gra[p2]));
+				gra.pushNode(name,new Multiply(name,gra[p1],gra[p2]));
 			}
 			else if(type=="/")
 			{
-				gra.pushNode(name,new Division(gra[p1],gra[p2]));
+				gra.pushNode(name,new Division(name,gra[p1],gra[p2]));
 			}
 			else if(type==">")
 			{
-				gra.pushNode(name,new GTR(gra[p1],gra[p2]));
+				gra.pushNode(name,new GTR(name,gra[p1],gra[p2]));
 			}
 			else if(type=="<")
 			{
-				gra.pushNode(name,new LSS(gra[p1],gra[p2]));
+				gra.pushNode(name,new LSS(name,gra[p1],gra[p2]));
 			}
 			else if(type==">=")
 			{
-				gra.pushNode(name,new GEQ(gra[p1],gra[p2]));
+				gra.pushNode(name,new GEQ(name,gra[p1],gra[p2]));
 			}
 			else if(type=="<=")
 			{
-				gra.pushNode(name,new LEQ(gra[p1],gra[p2]));
+				gra.pushNode(name,new LEQ(name,gra[p1],gra[p2]));
 			}
 			else if(type=="==")
 			{
-				gra.pushNode(name,new EQU(gra[p1],gra[p2]));
+				gra.pushNode(name,new EQU(name,gra[p1],gra[p2]));
 			}
 			else assert(0);
 		}
@@ -161,6 +159,31 @@ int main()
 			}
 
 			float ov = gra.eval(name,placeholderMap);
+			if(!isnan(ov))
+				cout << fixed << setprecision(4) <<ov<<endl;
+		}
+		else if(type=="DERIVATIVE")
+		{
+			placeholderMap.clear();
+			string name1,name2;
+			ss>>name1>>name2;
+			string phcountstr;
+			ss>>phcountstr;
+			int phcount=0;
+			if(!phcountstr.empty())
+			{
+				phcount=stoi(phcountstr);
+			}
+
+			for(int j=0; j<phcount; j++)
+			{
+				string x;
+				float y;
+				ss>>x>>y;
+				placeholderMap.insert(make_pair(x,y));
+			}
+
+			float ov = gra.getderivative(name1,name2,placeholderMap);
 			if(!isnan(ov))
 				cout << fixed << setprecision(4) <<ov<<endl;
 		}

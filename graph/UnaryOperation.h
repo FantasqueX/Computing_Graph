@@ -1,22 +1,22 @@
 #pragma once
-#include <iostream>
 #include "node.h"
 
 extern bool asserted;
 
 class Print:public UnaryOperation
 {
-	std::string nm; //保存被print变量名
+	std::string pnm; //保存被print变量名
 	public:
-		Print(std::string str, Node* parent);
+		Print(std::string str, std::string,Node* parent);
 		float func() override;
-};
+};		float derivative();
 
 class Sin:public UnaryOperation
 {
 	public:
 		using UnaryOperation::UnaryOperation;
 		float func() override;
+		float derivative();
 };
 
 class Exp:public UnaryOperation
@@ -24,6 +24,7 @@ class Exp:public UnaryOperation
 	public:
 		using UnaryOperation::UnaryOperation;
 		float func() override;
+		float derivative();
 };
 
 class Log:public UnaryOperation
@@ -31,6 +32,7 @@ class Log:public UnaryOperation
 	public:
 		using UnaryOperation::UnaryOperation;
 		float func() override;
+		float derivative();
 };
 
 class Tanh:public UnaryOperation
@@ -38,6 +40,7 @@ class Tanh:public UnaryOperation
 	public:
 		using UnaryOperation::UnaryOperation;
 		float func() override;
+		float derivative();
 };
 
 class Sigmoid:public UnaryOperation
@@ -45,4 +48,5 @@ class Sigmoid:public UnaryOperation
 	public:
 		using UnaryOperation::UnaryOperation;
 		float func() override;
+		float derivative();
 };

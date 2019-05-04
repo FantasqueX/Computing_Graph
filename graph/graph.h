@@ -22,5 +22,6 @@ class Graph
 		float eval(string nodename, const std::map<std::string,float> &phMap);//传入placeholder列表进行计算
 		void setVariable(string vname,float value);//设置variable的值
 		float lookupanswer(int t);//获取第t次操作的结果
+		float getderivative(string name1,string name2,std::map<string ,float> phMap);
 		void setAnswer(string vname,int t);
 };
