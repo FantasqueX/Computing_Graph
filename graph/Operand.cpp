@@ -5,7 +5,6 @@ void Placeholder::setValue(float a)
 	value=a;
 	calculated=1;
 }
-
 float Placeholder::getValue()
 {
 	if(calculated)
