@@ -8,6 +8,7 @@ bool asserted=0; //某一次eval是否已经给出error，避免重复输出
 Graph::Graph()//构造（初始化）
 {
     cnt = 0;
+    srand(time(0));
 }
 
 Graph::~Graph()//析构并delete所有节点
@@ -28,9 +29,12 @@ Node* Graph::operator[](const string& str)//下标运算，返回一个Node指�
 
 void Graph::pushNode(const string& str,Node* newnode) //将Node加入map中
 {
-    if(nodes[str]!=nullptr)
+    if(nodes[str]!=nullptr)//重命名原node,采用随机数避免重名
     {
-        nodes[str+"_old"] = nodes[str];//重命名原node,采用随机数避免重名
+        string tmp = str;
+        while(nodes[tmp] != nullptr)
+            tmp += char('a' + rand()%26);
+        nodes[tmp] = nodes[str];
     }
     nodes[str] = newnode;//用新node代替原node
 }
