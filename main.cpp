@@ -48,9 +48,6 @@ int main()
 		assert(tmp=="=");//断言
 		if(p1=="COND")
 		{
-			cin>>p2;
-			cin>>p3;
-			cin>>p4;
 			gra.newnode(name,p1,p2,p3,p4);
 		}
 		else if(p3.empty())
