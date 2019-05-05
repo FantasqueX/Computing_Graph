@@ -1,10 +1,8 @@
 #include <cassert>
 #include <iomanip>
 #include <sstream>
-
 #include <map>
-#include "graph/node.h"
-#include "graph/graph.h"
+#include "graph/Graph/graph.h"
 
 using namespace std;
 
@@ -97,7 +95,7 @@ int main()
 			if(!isnan(ov))
 				cout << fixed << setprecision(4) <<ov<<endl;
 		}
-		else if(type=="DERIVATIVE")
+		else if(type=="DERIVATIVE") //求导测试代码
 		{
 			placeholderMap.clear();
 			string name1,name2;
