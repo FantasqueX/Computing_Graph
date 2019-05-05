@@ -2,7 +2,7 @@
 
 float Sum::func()
 {
-	float x = parents[0]->geteval(),y = parents[1]->geteval();
+	float x = parents[0]->getValue(),y = parents[1]->getValue();
 	return x+y;
 }
 
@@ -18,7 +18,7 @@ float Sum::derivative2()
 
 float Subtraction::func()
 {
-	float x = parents[0]->geteval(),y = parents[1]->geteval();
+	float x = parents[0]->getValue(),y = parents[1]->getValue();
 	return x-y;
 }
 
@@ -34,23 +34,23 @@ float Subtraction::derivative2()
 
 float Multiply::func()
 {
-	float x = parents[0]->geteval(),y = parents[1]->geteval();
+	float x = parents[0]->getValue(),y = parents[1]->getValue();
 	return x*y;
 }
 
 float Multiply::derivative1()
 {
-	return parents[1]->geteval();
+	return parents[1]->getValue();
 }
 
 float Multiply::derivative2()
 {
-	return parents[0]->geteval();
+	return parents[0]->getValue();
 }
 
 float Division::func()
 {
-	float x = parents[0]->geteval(),y = parents[1]->geteval();
+	float x = parents[0]->getValue(),y = parents[1]->getValue();
 	if(y==0)
 	{
 		if(!asserted)
@@ -66,46 +66,46 @@ float Division::func()
 
 float Division::derivative1()
 {
-	return 1/parents[1]->geteval();
+	return 1/parents[1]->getValue();
 }
 
 float Division::derivative2()
 {
-	float x = parents[0]->geteval(),y = parents[1]->geteval();
+	float x = parents[0]->getValue(),y = parents[1]->getValue();
 	return -x/(y*y);
 }
 
 float EQU::func()
 {
-	float x = parents[0]->geteval(),y = parents[1]->geteval();
+	float x = parents[0]->getValue(),y = parents[1]->getValue();
 	if(std::isnan(x)||std::isnan(y))return NAN;
 	return float(x==y);
 }
 
 float GTR::func()
 {
-	float x = parents[0]->geteval(),y = parents[1]->geteval();
+	float x = parents[0]->getValue(),y = parents[1]->getValue();
 	if(std::isnan(x)||std::isnan(y))return NAN;
 	return float(x>y);
 }
 
 float GEQ::func()
 {
-	float x = parents[0]->geteval(),y = parents[1]->geteval();
+	float x = parents[0]->getValue(),y = parents[1]->getValue();
 	if(std::isnan(x)||std::isnan(y))return NAN;
 	return float(x>=y);
 }
 
 float LSS::func()
 {
-	float x = parents[0]->geteval(),y = parents[1]->geteval();
+	float x = parents[0]->getValue(),y = parents[1]->getValue();
 	if(std::isnan(x)||std::isnan(y))return NAN;
 	return float(x<y);
 }
 
 float LEQ::func()
 {
-	float x = parents[0]->geteval(),y = parents[1]->geteval();
+	float x = parents[0]->getValue(),y = parents[1]->getValue();
 	if(std::isnan(x)||std::isnan(y))return NAN;
 	return float(x<=y);
 }

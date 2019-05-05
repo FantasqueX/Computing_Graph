@@ -1,30 +1,29 @@
 #include "Operand.h"
 
-void Placeholder::setvalue(float a)
+void Placeholder::setValue(float a)
 {
 	value=a;
 	calculated=1;
 }
-float Placeholder::geteval()
+
+float Placeholder::getValue()
 {
 	if(calculated)
 		return value;
-	else
+	if(!asserted)
 	{
-		if(!asserted)
-		{
-			std::cout<<"ERROR: Placeholder missing"<<std::endl;
-			asserted=1;
-		}
-		return NAN;
+		std::cout<<"ERROR: Placeholder missing"<<std::endl;
+		asserted=1;
 	}
+	return NAN;
 }
+
 Placeholder::Placeholder(std::string nm)
 {
 	name = nm;
 }
 
-float Constant::geteval()
+float Constant::getValue()
 {
 	return value;
 }
@@ -37,11 +36,11 @@ Constant::Constant(std::string nm,float b)
 	value=b;
 }
 
-void Variable::setvalue(float a)
+void Variable::setValue(float a)
 {
 	value=a;
 }
-float Variable::geteval()
+float Variable::getValue()
 {
 	return value;
 }

@@ -14,9 +14,9 @@ class Node
 		std::string name;
 		std::vector<Node*> parents;
 	public:
-		std::vector<Node*> sons;
-		virtual float geteval();//获取节点数值
-		virtual void setvalue(float a);//对variable赋值 
+		std::vector<Node*> sons;//加一个接口
+		virtual float getValue();//获取节点数值
+		virtual void setValue(float a);//对variable赋值 
 		virtual void reset() ;//设为"未计算"状态
 		virtual float func() = 0;
 		virtual float getderivative(Node*);

@@ -5,25 +5,24 @@ extern bool asserted;
 class Placeholder:public Operand
 {
 	public:
-		std::string name;
-		void setvalue(float a);
-		float geteval() override;
-		Placeholder(std::string);
+		void setValue(float a);
+		float getValue() override;
+		Placeholder(std::string nm);
 };
 
 class Constant:public Operand
 {
 	public:
-		float geteval() override;
+		float getValue() override;
 		void reset() override;
-		Constant(std::string,float b);
+		Constant(std::string nm,float b);
 };
 
 class Variable:public Operand
 {
 	public:
-		void setvalue(float a);
-		float geteval() override;
+		void setValue(float a);
+		float getValue() override;
 		void reset() override;
-		Variable(std::string,float b);
+		Variable(std::string nm,float b);
 };

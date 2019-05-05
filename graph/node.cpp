@@ -1,6 +1,6 @@
 #include "node.h"
 
-void Node::setvalue(float a)//除了variable以外这个函数不起作用
+void Node::setValue(float a)//除了variable以外这个函数不起作用
 {
 }
 
@@ -12,7 +12,7 @@ void Node::reset()
     calculatedderivative = 0;
 }
 
-float Node::geteval()
+float Node::getValue()
 {
     if(calculated)
         return tempeval;//如果已计算就直接返回计算数值
