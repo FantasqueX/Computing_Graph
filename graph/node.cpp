@@ -1,6 +1,6 @@
 #include "node.h"
 
-void Node::setvalue(float a)//除了variable以外这个函数不起作用
+void Node::setValue(float a)//除了variable以外这个函数不起作用
 {
 }
 
@@ -12,7 +12,12 @@ void Node::reset()
     calculatedderivative = 0;
 }
 
-float Node::geteval()
+void Node::pushback(Node* s)
+{
+    sons.push_back(s);
+}
+
+float Node::getValue()
 {
     if(calculated)
         return tempeval;//如果已计算就直接返回计算数值
@@ -93,7 +98,7 @@ UnaryOperation::UnaryOperation(std::string nm,Node* p1)
 {
     name = nm;
     parents.push_back(p1);
-    p1->sons.push_back(this);
+    p1->pushback(this);
 }
 
 BinaryOperation::BinaryOperation(std::string nm,Node* p1,Node* p2)
@@ -101,8 +106,8 @@ BinaryOperation::BinaryOperation(std::string nm,Node* p1,Node* p2)
     name = nm;
     parents.push_back(p1);
     parents.push_back(p2);
-    p1->sons.push_back(this);
-    p2->sons.push_back(this);
+    p1->pushback(this);
+    p2->pushback(this);
 }
 
 TernaryOperation::TernaryOperation(std::string nm,Node* p1,Node* p2,Node* p3)
@@ -111,7 +116,7 @@ TernaryOperation::TernaryOperation(std::string nm,Node* p1,Node* p2,Node* p3)
     parents.push_back(p1);
     parents.push_back(p2);
     parents.push_back(p3);
-    p1->sons.push_back(this);
-    p2->sons.push_back(this);
-    p3->sons.push_back(this);
+    p1->pushback(this);
+    p2->pushback(this);
+    p3->pushback(this);
 }

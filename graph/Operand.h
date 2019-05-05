@@ -6,15 +6,15 @@ class Placeholder:public Operand
 {
 	public:
 		std::string name;
-		void setvalue(float a);
-		float geteval() override;
+		void setValue(float a);
+		float getValue() override;
 		Placeholder(std::string);
 };
 
 class Constant:public Operand
 {
 	public:
-		float geteval() override;
+		float getValue() override;
 		void reset() override;
 		Constant(std::string,float b);
 };
@@ -22,8 +22,8 @@ class Constant:public Operand
 class Variable:public Operand
 {
 	public:
-		void setvalue(float a);
-		float geteval() override;
+		void setValue(float a);
+		float getValue() override;
 		void reset() override;
 		Variable(std::string,float b);
 };

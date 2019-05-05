@@ -35,8 +35,8 @@ float Graph::eval(std::string nodename, const std::map<std::string,float> &phMap
     ++cnt;
     reset(nodename);
     for(auto iter=phMap.begin(); iter != phMap.end(); iter++)
-        nodes[iter->first]->setvalue(iter->second);
-    outvalue[cnt] = nodes[nodename]->geteval();
+        nodes[iter->first]->setValue(iter->second);
+    outvalue[cnt] = nodes[nodename]->getValue();
     return outvalue[cnt];
 }
 
@@ -49,7 +49,7 @@ float Graph::getderivative(std::string name1,std::string name2, std::map<std::st
 void Graph::setVariable(std::string vname,float value)
 {
     ++cnt;
-    nodes[vname]->setvalue(value);
+    nodes[vname]->setValue(value);
 }
 
 float Graph::lookupanswer(int t)
