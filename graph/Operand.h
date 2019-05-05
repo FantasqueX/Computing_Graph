@@ -7,7 +7,7 @@ class Placeholder:public Operand
 	public:
 		void setValue(float a);
 		float getValue() override;
-		Placeholder(std::string nm);
+		Placeholder(std::string);
 };
 
 class Constant:public Operand

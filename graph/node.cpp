@@ -12,7 +12,12 @@ void Node::reset()
     calculatedderivative = 0;
 }
 
-float Node::getValue()
+void Node::pushback(Node* s)
+{
+    sons.push_back(s);
+}
+
+float Operation::getValue()
 {
     if(calculated)
         return tempeval;//如果已计算就直接返回计算数值
@@ -37,11 +42,6 @@ float Node::getderivative(Node* f)//求得导f/导x
             tempderivative += (*it)->getderivative(f)*(*it)->lookupderivative(this);
     }
     return tempderivative;
-}
-
-float Operand::func()
-{
-    return NAN;
 }
 
 float Operand::lookupderivative(Node* p)
@@ -93,7 +93,7 @@ UnaryOperation::UnaryOperation(std::string nm,Node* p1)
 {
     name = nm;
     parents.push_back(p1);
-    p1->sons.push_back(this);
+    p1->pushback(this);
 }
 
 BinaryOperation::BinaryOperation(std::string nm,Node* p1,Node* p2)
@@ -101,8 +101,8 @@ BinaryOperation::BinaryOperation(std::string nm,Node* p1,Node* p2)
     name = nm;
     parents.push_back(p1);
     parents.push_back(p2);
-    p1->sons.push_back(this);
-    p2->sons.push_back(this);
+    p1->pushback(this);
+    p2->pushback(this);
 }
 
 TernaryOperation::TernaryOperation(std::string nm,Node* p1,Node* p2,Node* p3)
@@ -111,7 +111,7 @@ TernaryOperation::TernaryOperation(std::string nm,Node* p1,Node* p2,Node* p3)
     parents.push_back(p1);
     parents.push_back(p2);
     parents.push_back(p3);
-    p1->sons.push_back(this);
-    p2->sons.push_back(this);
-    p3->sons.push_back(this);
+    p1->pushback(this);
+    p2->pushback(this);
+    p3->pushback(this);
 }
