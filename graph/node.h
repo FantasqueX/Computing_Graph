@@ -4,6 +4,8 @@
 #include<vector>
 #include<string>
 
+using std::string;
+
 class Node
 {
 	protected:
@@ -11,10 +13,11 @@ class Node
 		float tempderivative;//临时计算导数值
 		bool calculated = 0;//是否已计算 (避免重复计算)
 		bool calculatedderivative = 0;//是否已计算
-		std::string name;
+		string name;
 		std::vector<Node*> parents;
 	public:
 		std::vector<Node*> sons;//加一个接口
+		virtual string getName() const;
 		virtual float getValue();//获取节点数值
 		virtual void setValue(float a);//对variable赋值 
 		virtual void reset() ;//设为"未计算"状态
@@ -35,7 +38,7 @@ class Operand:public Node//没有父节点的节点,constant,variable,placeholde
 class UnaryOperation:public Node//1个父节点的节点,print和单变量函数
 {
 	public:
-		UnaryOperation(std::string,Node* p1);
+		UnaryOperation(string,Node* p1);
 		virtual float derivative() ;
 		float lookupderivative(Node*);
 };
@@ -43,7 +46,7 @@ class UnaryOperation:public Node//1个父节点的节点,print和单变量函数
 class BinaryOperation:public Node//2个父节点的节点,四则运算与比较
 {
 	public:
-		BinaryOperation(std::string,Node* p1,Node* p2);
+		BinaryOperation(string,Node* p1,Node* p2);
 		virtual float derivative1() ;
 		virtual float derivative2() ;
 		float lookupderivative(Node*);
@@ -52,6 +55,6 @@ class BinaryOperation:public Node//2个父节点的节点,四则运算与比较
 class TernaryOperation:public Node//3个父节点的节点,只有cond
 {
 	public:
-		TernaryOperation(std::string,Node* p1,Node* p2,Node* p3);
+		TernaryOperation(string,Node* p1,Node* p2,Node* p3);
 		float lookupderivative(Node*);
 };

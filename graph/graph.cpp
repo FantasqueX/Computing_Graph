@@ -1,4 +1,5 @@
 #include "graph.h"
+#include "NodeFactory.h"
 
 bool asserted=0; //某一次eval是否已经给出error，避免重复输出
 
@@ -60,4 +61,29 @@ float Graph::lookupanswer(int t)
 void Graph::setAnswer(string vname,int t)
 {
     setVariable(vname,lookupanswer(t));
+}
+
+void Graph::newnode(string placeholderName, string type)
+{
+    pushNode(placeholderName, NodeFactory::createNode(placeholderName,type));
+}
+
+void Graph::newnode(string Name, string type, float value)
+{
+    pushNode(Name, NodeFactory::createNode(Name, type, value));
+}
+
+void Graph::newnode(string Name, string type, string parentName)
+{
+    pushNode(Name, NodeFactory::createNode(Name, type, nodes[parentName]));
+}
+
+void Graph::newnode(string Name, string type, string parent1Name, string parent2Name)
+{
+    pushNode(Name, NodeFactory::createNode(Name, type, nodes[parent1Name],nodes[parent2Name]));
+}
+
+void Graph::newnode(string Name, string type, string parent1Name, string parent2Name, string parent3Name)
+{
+    pushNode(Name, NodeFactory::createNode(Name, type, nodes[parent1Name],nodes[parent2Name],nodes[parent3Name]));
 }

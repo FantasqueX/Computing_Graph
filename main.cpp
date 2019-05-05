@@ -20,19 +20,14 @@ int main()
 	{
 		cin>>name;
 		cin>>type;
-		if(type=="C")
+		if(type=="P")
+		{
+			gra.newnode(name,type);
+		}
+		else if ((type=="V")||(type=="C"))
 		{
 			cin>>value;
-			gra.pushNode(name,new Constant(name,value));
-		}
-		else if(type=="V")
-		{
-			cin>>value;
-			gra.pushNode(name,new Variable(name,value));
-		}
-		else if(type=="P")
-		{
-			gra.pushNode(name,new Placeholder(name));
+			gra.newnode(name,type,value);
 		}
 		else assert(0);
 	}
@@ -40,89 +35,32 @@ int main()
 	cin>>m;//运算节点数
 	for(int i=0; i<m; i++)
 	{
-		cin>>name;
-		cin>>tmp;
+		string expression;
+		getline(cin,expression);
+		if(expression.empty())//跳过空行
+		{
+			i--;
+			continue;
+		}
+		stringstream ss(expression);
+		string p1,p2,p3,p4;//处理输入
+		ss>>name>>tmp>>p1>>p2>>p3>>p4;
 		assert(tmp=="=");//断言
-		string p1,p2,p3,p4;//处理输入 
-		cin>>p1;
 		if(p1=="COND")
 		{
 			cin>>p2;
 			cin>>p3;
 			cin>>p4;
-			gra.pushNode(name,new Cond(name,gra[p2],gra[p3],gra[p4]));
+			gra.newnode(name,p1,p2,p3,p4);
 		}
-		else if(p1=="PRINT")
+		else if(p3.empty())
 		{
-			cin>>p2;
-			gra.pushNode(name,new Print(name,p2,gra[p2]));
-		}
-		else if(p1=="SIN")
-		{
-			cin>>p2;
-			gra.pushNode(name,new Sin(name,gra[p2]));
-		}
-		else if(p1=="EXP")
-		{
-			cin>>p2;
-			gra.pushNode(name,new Exp(name,gra[p2]));
-		}
-		else if(p1=="LOG")
-		{
-			cin>>p2;
-			gra.pushNode(name,new Log(name,gra[p2]));
-		}
-		else if(p1=="TANH")
-		{
-			cin>>p2;
-			gra.pushNode(name,new Tanh(name,gra[p2]));
-		}
-		else if(p1=="SIGMOID")
-		{
-			cin>>p2;
-			gra.pushNode(name,new Sigmoid(name,gra[p2]));
+			gra.newnode(name,p1,p2);
 		}
 		else
 		{
-			cin>>type;
-			cin>>p2;
-			if(type=="+")
-			{
-				gra.pushNode(name,new Sum(name,gra[p1],gra[p2]));
-			}
-			else if(type=="-")
-			{
-				gra.pushNode(name,new Subtraction(name,gra[p1],gra[p2]));
-			}
-			else if(type=="*")
-			{
-				gra.pushNode(name,new Multiply(name,gra[p1],gra[p2]));
-			}
-			else if(type=="/")
-			{
-				gra.pushNode(name,new Division(name,gra[p1],gra[p2]));
-			}
-			else if(type==">")
-			{
-				gra.pushNode(name,new GTR(name,gra[p1],gra[p2]));
-			}
-			else if(type=="<")
-			{
-				gra.pushNode(name,new LSS(name,gra[p1],gra[p2]));
-			}
-			else if(type==">=")
-			{
-				gra.pushNode(name,new GEQ(name,gra[p1],gra[p2]));
-			}
-			else if(type=="<=")
-			{
-				gra.pushNode(name,new LEQ(name,gra[p1],gra[p2]));
-			}
-			else if(type=="==")
-			{
-				gra.pushNode(name,new EQU(name,gra[p1],gra[p2]));
-			}
-			else assert(0);
+			gra.newnode(name,p2,p1,p3);
+			
 		}
 	}
 

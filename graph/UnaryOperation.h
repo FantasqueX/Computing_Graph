@@ -7,7 +7,7 @@ class Print:public UnaryOperation
 {
 	std::string pnm; //保存被print变量名
 	public:
-		Print(std::string str, std::string,Node* parent);
+		Print(std::string str, Node* parent);
 		float func() override;
 };		float derivative();
 

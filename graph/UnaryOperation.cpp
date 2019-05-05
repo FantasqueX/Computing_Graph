@@ -1,8 +1,8 @@
 #include "UnaryOperation.h"
 
-Print::Print(std::string nm,std::string str,Node* parent): UnaryOperation(nm,parent)
+Print::Print(std::string nm,Node* parent): UnaryOperation(nm,parent)
 {
-	pnm = str;
+	pnm = parent->getName();
 }
 
 float Print::func()

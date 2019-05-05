@@ -1,5 +1,10 @@
 #include "node.h"
 
+std::string Node::getName() const
+{
+    return name;
+}
+
 void Node::setValue(float a)//除了variable以外这个函数不起作用
 {
 }

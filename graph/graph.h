@@ -6,18 +6,30 @@
 #include "UnaryOperation.h"
 #include "BinaryOperation.h"
 #include "TernaryOperation.h"
+#include "NodeFactory.h"
 
 extern bool asserted;
 using std::string;
+
 class Graph
 {
 	std::map<string,Node*> nodes;
 	std::map<int,float> outvalue;//eval结果历史纪录，key储存eval是第几次操作，value储存eval结果
 	int cnt;//总操作次数
+	NodeFactory factory;
+
+	void pushNode(string str,Node* newnode);//加入新节点
+	Node* operator[] (const string& str);//获取节点
 	public:
 		Graph();
-		Node* operator[] (const string& str);//获取节点
-		void pushNode(string str,Node* newnode);//加入新节点
+		
+		
+		void newnode(string placeholderName, string type);
+		void newnode(string Name, string type, float value);
+		void newnode(string Name, string type, string parentName);
+		void newnode(string Name, string type, string parent1Name, string parent2Name);
+		void newnode(string Name, string type, string parent1Name, string parent2Name, string parent3Name);
+		
 		void reset(string nodename);//清除上一次计算的结果(内部递归清除所有计算过程)
 		float eval(string nodename, const std::map<std::string,float> &phMap);//传入placeholder列表进行计算
 		void setVariable(string vname,float value);//设置variable的值
