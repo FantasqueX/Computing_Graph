@@ -17,7 +17,7 @@ void Node::pushback(Node* s)
     sons.push_back(s);
 }
 
-float Node::getValue()
+float Operation::getValue()
 {
     if(calculated)
         return tempeval;//如果已计算就直接返回计算数值
@@ -42,11 +42,6 @@ float Node::getderivative(Node* f)//求得导f/导x
             tempderivative += (*it)->getderivative(f)*(*it)->lookupderivative(this);
     }
     return tempderivative;
-}
-
-float Operand::func()
-{
-    return NAN;
 }
 
 float Operand::lookupderivative(Node* p)
